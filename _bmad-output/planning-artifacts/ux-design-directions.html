@@ -1,0 +1,1673 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MyPortfolio — Design Directions</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap");
+
+      :root {
+        --bg-primary: #0a0a0f;
+        --bg-secondary: #12121a;
+        --bg-tertiary: #1a1a25;
+        --border-subtle: #2a2a3a;
+        --border-active: #3a3a50;
+        --text-primary: #e8e8ed;
+        --text-secondary: #a0a0b0;
+        --text-tertiary: #6b6b80;
+        --text-muted: #45455a;
+        --accent: #00dc82;
+        --accent-hover: #00ff96;
+        --accent-muted: rgba(0, 220, 130, 0.12);
+        --accent-glow: rgba(0, 220, 130, 0.08);
+        --error: #ff6b6b;
+        --warning: #ffb224;
+        --info: #60a5fa;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "JetBrains Mono", monospace;
+        background: var(--bg-primary);
+        color: var(--text-primary);
+        line-height: 1.6;
+      }
+
+      /* === DIRECTION NAVIGATOR === */
+      .direction-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: rgba(10, 10, 15, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border-subtle);
+        padding: 12px 24px;
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        overflow-x: auto;
+      }
+
+      .direction-nav h1 {
+        font-size: 14px;
+        font-weight: 600;
+        color: var(--accent);
+        white-space: nowrap;
+        letter-spacing: 0.04em;
+      }
+
+      .nav-divider {
+        width: 1px;
+        height: 24px;
+        background: var(--border-subtle);
+        flex-shrink: 0;
+      }
+
+      .direction-btn {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 12px;
+        padding: 6px 14px;
+        border: 1px solid var(--border-subtle);
+        border-radius: 4px;
+        background: transparent;
+        color: var(--text-secondary);
+        cursor: pointer;
+        white-space: nowrap;
+        transition: all 0.2s;
+      }
+
+      .direction-btn:hover {
+        border-color: var(--accent);
+        color: var(--text-primary);
+      }
+
+      .direction-btn.active {
+        border-color: var(--accent);
+        background: var(--accent-muted);
+        color: var(--accent);
+      }
+
+      /* === SECTIONS === */
+      .direction-section {
+        display: none;
+        min-height: 100vh;
+        padding-top: 72px;
+      }
+
+      .direction-section.active {
+        display: block;
+      }
+
+      /* === DIRECTION HEADER === */
+      .direction-header {
+        padding: 48px 24px;
+        max-width: 1120px;
+        margin: 0 auto;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .direction-header .label {
+        font-size: 12px;
+        color: var(--accent);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 12px;
+      }
+
+      .direction-header h2 {
+        font-size: 32px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 12px;
+      }
+
+      .direction-header p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        max-width: 680px;
+        line-height: 1.7;
+      }
+
+      /* === MOCKUP FRAME === */
+      .mockup-frame {
+        max-width: 1120px;
+        margin: 48px auto;
+        padding: 0 24px;
+      }
+
+      .mockup-container {
+        border: 1px solid var(--border-subtle);
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--bg-primary);
+      }
+
+      .mockup-browser-bar {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 16px;
+        background: var(--bg-secondary);
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .browser-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--border-subtle);
+      }
+
+      .browser-dot.red {
+        background: #ff6b6b;
+      }
+      .browser-dot.yellow {
+        background: #ffb224;
+      }
+      .browser-dot.green {
+        background: #00dc82;
+      }
+
+      .browser-url {
+        flex: 1;
+        margin-left: 8px;
+        font-size: 11px;
+        color: var(--text-tertiary);
+        background: var(--bg-tertiary);
+        padding: 4px 12px;
+        border-radius: 4px;
+      }
+
+      .mockup-content {
+        min-height: 600px;
+        position: relative;
+      }
+
+      /* === DIRECTION 1: MINIMAL VERTICAL === */
+      .d1-hero {
+        padding: 96px 48px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .d1-greeting {
+        font-size: 14px;
+        color: var(--accent);
+        letter-spacing: 0.04em;
+      }
+
+      .d1-name {
+        font-size: 56px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+      }
+
+      .d1-role {
+        font-size: 16px;
+        color: var(--text-secondary);
+        margin-top: 4px;
+      }
+
+      .d1-tagline {
+        font-size: 14px;
+        color: var(--text-tertiary);
+        max-width: 480px;
+        margin-top: 8px;
+      }
+
+      .d1-nav {
+        display: flex;
+        gap: 24px;
+        margin-top: 32px;
+      }
+
+      .d1-nav a {
+        font-size: 14px;
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.2s;
+        position: relative;
+      }
+
+      .d1-nav a:hover,
+      .d1-nav a.active {
+        color: var(--accent);
+      }
+
+      .d1-nav a.active::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--accent);
+      }
+
+      .d1-projects {
+        padding: 48px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        border-top: 1px solid var(--border-subtle);
+      }
+
+      .d1-project-card {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 24px 0;
+        border-bottom: 1px solid var(--border-subtle);
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .d1-project-card:hover {
+        padding-left: 12px;
+      }
+
+      .d1-project-card:hover .d1-project-title {
+        color: var(--accent);
+      }
+
+      .d1-project-title {
+        font-size: 18px;
+        font-weight: 600;
+        transition: color 0.2s;
+      }
+
+      .d1-project-meta {
+        font-size: 12px;
+        color: var(--text-tertiary);
+        margin-top: 4px;
+      }
+
+      .d1-project-arrow {
+        font-size: 18px;
+        color: var(--text-muted);
+        transition: all 0.2s;
+      }
+
+      .d1-project-card:hover .d1-project-arrow {
+        color: var(--accent);
+        transform: translateX(4px);
+      }
+
+      /* === DIRECTION 2: CARD GRID === */
+      .d2-topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 48px;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .d2-logo {
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .d2-logo span {
+        color: var(--accent);
+      }
+
+      .d2-nav {
+        display: flex;
+        gap: 24px;
+      }
+
+      .d2-nav a {
+        font-size: 12px;
+        color: var(--text-tertiary);
+        text-decoration: none;
+        letter-spacing: 0.04em;
+        transition: color 0.2s;
+      }
+
+      .d2-nav a:hover {
+        color: var(--text-primary);
+      }
+
+      .d2-hero {
+        padding: 96px 48px 48px;
+        text-align: center;
+      }
+
+      .d2-hero h1 {
+        font-size: 42px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 16px;
+      }
+
+      .d2-hero p {
+        font-size: 14px;
+        color: var(--text-secondary);
+        max-width: 520px;
+        margin: 0 auto;
+      }
+
+      .d2-grid {
+        padding: 32px 48px 48px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .d2-card {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-subtle);
+        border-radius: 6px;
+        padding: 28px;
+        cursor: pointer;
+        transition: all 0.25s;
+      }
+
+      .d2-card:hover {
+        border-color: var(--accent);
+        background: var(--bg-tertiary);
+        transform: translateY(-2px);
+      }
+
+      .d2-card-title {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .d2-card-desc {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-bottom: 16px;
+        line-height: 1.5;
+      }
+
+      .d2-badges {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .badge {
+        font-size: 11px;
+        padding: 3px 8px;
+        border-radius: 3px;
+        background: var(--accent-muted);
+        color: var(--accent);
+        letter-spacing: 0.02em;
+      }
+
+      .badge.blue {
+        background: rgba(96, 165, 250, 0.12);
+        color: var(--info);
+      }
+      .badge.yellow {
+        background: rgba(255, 178, 36, 0.12);
+        color: var(--warning);
+      }
+
+      /* === DIRECTION 3: TERMINAL === */
+      .d3-terminal {
+        padding: 32px 48px;
+        font-size: 14px;
+      }
+
+      .d3-prompt {
+        color: var(--accent);
+      }
+
+      .d3-command {
+        color: var(--text-primary);
+      }
+
+      .d3-output {
+        color: var(--text-secondary);
+        margin: 8px 0 24px 0;
+        line-height: 1.8;
+      }
+
+      .d3-cursor {
+        display: inline-block;
+        width: 8px;
+        height: 16px;
+        background: var(--accent);
+        animation: blink 1s step-end infinite;
+        vertical-align: text-bottom;
+        margin-left: 2px;
+      }
+
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+
+      .d3-section {
+        margin-top: 32px;
+        padding-top: 24px;
+        border-top: 1px solid var(--border-subtle);
+      }
+
+      .d3-project-line {
+        padding: 8px 0;
+        display: flex;
+        gap: 16px;
+        cursor: pointer;
+        transition: color 0.15s;
+      }
+
+      .d3-project-line:hover {
+        color: var(--accent);
+      }
+
+      .d3-project-line .idx {
+        color: var(--text-muted);
+        min-width: 24px;
+      }
+
+      .d3-project-line .name {
+        font-weight: 600;
+        min-width: 200px;
+      }
+
+      .d3-project-line .desc {
+        color: var(--text-tertiary);
+        font-size: 13px;
+      }
+
+      /* === DIRECTION 4: SPLIT LAYOUT === */
+      .d4-layout {
+        display: grid;
+        grid-template-columns: 320px 1fr;
+        min-height: 600px;
+      }
+
+      .d4-sidebar {
+        background: var(--bg-secondary);
+        border-right: 1px solid var(--border-subtle);
+        padding: 48px 32px;
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .d4-sidebar-name {
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .d4-sidebar-role {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-top: 4px;
+      }
+
+      .d4-sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .d4-sidebar-nav a {
+        font-size: 13px;
+        color: var(--text-tertiary);
+        text-decoration: none;
+        padding: 8px 12px;
+        border-radius: 4px;
+        transition: all 0.15s;
+      }
+
+      .d4-sidebar-nav a:hover {
+        background: var(--bg-tertiary);
+        color: var(--text-primary);
+      }
+
+      .d4-sidebar-nav a.active {
+        background: var(--accent-muted);
+        color: var(--accent);
+      }
+
+      .d4-sidebar-contact {
+        margin-top: auto;
+        font-size: 12px;
+        color: var(--text-tertiary);
+      }
+
+      .d4-sidebar-contact a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .d4-main {
+        padding: 48px;
+        overflow-y: auto;
+      }
+
+      .d4-main h2 {
+        font-size: 24px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 32px;
+      }
+
+      .d4-project-item {
+        padding: 24px;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-subtle);
+        border-radius: 6px;
+        margin-bottom: 16px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+
+      .d4-project-item:hover {
+        border-color: var(--border-active);
+      }
+
+      .d4-project-item h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .d4-project-item p {
+        font-size: 13px;
+        color: var(--text-secondary);
+        margin-bottom: 12px;
+      }
+
+      /* === DIRECTION 5: NEWSPAPER / TYPE-DRIVEN === */
+      .d5-header {
+        padding: 32px 48px 24px;
+        border-bottom: 2px solid var(--text-primary);
+      }
+
+      .d5-masthead {
+        font-size: 48px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        text-align: center;
+        margin-bottom: 8px;
+      }
+
+      .d5-dateline {
+        text-align: center;
+        font-size: 11px;
+        color: var(--text-tertiary);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .d5-nav-strip {
+        display: flex;
+        justify-content: center;
+        gap: 32px;
+        margin-top: 16px;
+        padding-top: 12px;
+        border-top: 1px solid var(--border-subtle);
+      }
+
+      .d5-nav-strip a {
+        font-size: 12px;
+        color: var(--text-secondary);
+        text-decoration: none;
+        letter-spacing: 0.04em;
+      }
+
+      .d5-nav-strip a:hover {
+        color: var(--accent);
+      }
+
+      .d5-body {
+        padding: 48px;
+        display: grid;
+        grid-template-columns: 2fr 1fr;
+        gap: 48px;
+      }
+
+      .d5-headline {
+        font-size: 28px;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.2;
+        margin-bottom: 16px;
+      }
+
+      .d5-byline {
+        font-size: 12px;
+        color: var(--text-tertiary);
+        margin-bottom: 24px;
+        letter-spacing: 0.02em;
+      }
+
+      .d5-article-text {
+        font-size: 14px;
+        color: var(--text-secondary);
+        line-height: 1.8;
+        column-count: 1;
+      }
+
+      .d5-sidebar-section {
+        border-left: 1px solid var(--border-subtle);
+        padding-left: 32px;
+      }
+
+      .d5-sidebar-title {
+        font-size: 12px;
+        color: var(--accent);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+      .d5-sidebar-item {
+        padding: 12px 0;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .d5-sidebar-item h4 {
+        font-size: 13px;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .d5-sidebar-item p {
+        font-size: 11px;
+        color: var(--text-tertiary);
+      }
+
+      /* === DIRECTION 6: STATUS BAR + CLEAN === */
+      .d6-status-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 6px 16px;
+        background: var(--bg-secondary);
+        border-bottom: 1px solid var(--border-subtle);
+        font-size: 11px;
+        color: var(--text-tertiary);
+      }
+
+      .d6-status-left,
+      .d6-status-right {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .d6-status-indicator {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .d6-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--accent);
+      }
+
+      .d6-hero {
+        padding: 128px 48px 96px;
+        max-width: 800px;
+      }
+
+      .d6-hero .label {
+        font-size: 12px;
+        color: var(--accent);
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 24px;
+      }
+
+      .d6-hero h1 {
+        font-size: 48px;
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+        margin-bottom: 24px;
+      }
+
+      .d6-hero h1 span {
+        color: var(--accent);
+      }
+
+      .d6-hero p {
+        font-size: 16px;
+        color: var(--text-secondary);
+        line-height: 1.7;
+        max-width: 560px;
+      }
+
+      .d6-cta-row {
+        display: flex;
+        gap: 12px;
+        margin-top: 32px;
+      }
+
+      .d6-btn {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 13px;
+        padding: 10px 20px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-decoration: none;
+      }
+
+      .d6-btn-primary {
+        background: var(--accent);
+        color: var(--bg-primary);
+        border: 1px solid var(--accent);
+        font-weight: 600;
+      }
+
+      .d6-btn-primary:hover {
+        background: var(--accent-hover);
+      }
+
+      .d6-btn-secondary {
+        background: transparent;
+        color: var(--text-secondary);
+        border: 1px solid var(--border-subtle);
+      }
+
+      .d6-btn-secondary:hover {
+        border-color: var(--text-tertiary);
+        color: var(--text-primary);
+      }
+
+      .d6-projects-section {
+        padding: 48px;
+        border-top: 1px solid var(--border-subtle);
+      }
+
+      .d6-section-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 32px;
+      }
+
+      .d6-section-header h2 {
+        font-size: 14px;
+        color: var(--text-tertiary);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+      }
+
+      .d6-kbd {
+        font-size: 10px;
+        padding: 2px 6px;
+        border: 1px solid var(--border-subtle);
+        border-radius: 3px;
+        color: var(--text-muted);
+      }
+
+      .d6-project-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+      }
+
+      .d6-project-card {
+        padding: 24px;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-subtle);
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.25s;
+      }
+
+      .d6-project-card:hover {
+        border-color: var(--accent);
+      }
+
+      .d6-project-card h3 {
+        font-size: 15px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .d6-project-card p {
+        font-size: 13px;
+        color: var(--text-tertiary);
+        margin-bottom: 12px;
+      }
+
+      .d6-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 16px;
+        background: var(--bg-secondary);
+        border-top: 1px solid var(--border-subtle);
+        font-size: 11px;
+        color: var(--text-muted);
+        position: sticky;
+        bottom: 0;
+      }
+
+      .d6-footer-left,
+      .d6-footer-right {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+      }
+
+      /* === NOTES SECTION === */
+      .direction-notes {
+        max-width: 1120px;
+        margin: 32px auto;
+        padding: 0 24px 48px;
+      }
+
+      .direction-notes h3 {
+        font-size: 14px;
+        color: var(--accent);
+        letter-spacing: 0.04em;
+        margin-bottom: 16px;
+      }
+
+      .notes-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+      }
+
+      .note-card {
+        padding: 16px;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border-subtle);
+        border-radius: 4px;
+      }
+
+      .note-card h4 {
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 6px;
+      }
+
+      .note-card p {
+        font-size: 11px;
+        color: var(--text-tertiary);
+        line-height: 1.5;
+      }
+
+      .note-card .tag {
+        display: inline-block;
+        font-size: 10px;
+        padding: 2px 6px;
+        border-radius: 2px;
+        margin-top: 8px;
+      }
+
+      .tag-strength {
+        background: rgba(0, 220, 130, 0.12);
+        color: var(--accent);
+      }
+      .tag-concern {
+        background: rgba(255, 178, 36, 0.12);
+        color: var(--warning);
+      }
+      .tag-neutral {
+        background: var(--bg-tertiary);
+        color: var(--text-tertiary);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVIGATION -->
+    <nav class="direction-nav">
+      <h1>// DESIGN DIRECTIONS</h1>
+      <div class="nav-divider"></div>
+      <button class="direction-btn active" onclick="showDirection(1)">01 Minimal Vertical</button>
+      <button class="direction-btn" onclick="showDirection(2)">02 Card Grid</button>
+      <button class="direction-btn" onclick="showDirection(3)">03 Terminal</button>
+      <button class="direction-btn" onclick="showDirection(4)">04 Split Panel</button>
+      <button class="direction-btn" onclick="showDirection(5)">05 Type-Driven</button>
+      <button class="direction-btn" onclick="showDirection(6)">06 Status Bar</button>
+    </nav>
+
+    <!-- DIRECTION 1: MINIMAL VERTICAL -->
+    <section class="direction-section active" id="direction-1">
+      <div class="direction-header">
+        <div class="label">Direction 01</div>
+        <h2>Minimal Vertical</h2>
+        <p>
+          Pure vertical scroll. Name dominates. Projects as a clean list — no cards, no grid, just
+          lines. The simplest possible expression. Extreme confidence through reduction.
+        </p>
+      </div>
+
+      <div class="mockup-frame">
+        <div class="mockup-container">
+          <div class="mockup-browser-bar">
+            <div class="browser-dot red"></div>
+            <div class="browser-dot yellow"></div>
+            <div class="browser-dot green"></div>
+            <div class="browser-url">baobao.dev</div>
+          </div>
+          <div class="mockup-content">
+            <div class="d1-hero">
+              <div class="d1-greeting">// hello world</div>
+              <div class="d1-name">BaoBao</div>
+              <div class="d1-role">Frontend Developer</div>
+              <div class="d1-tagline">
+                Building precise, performant interfaces with Next.js, TypeScript, and an obsession
+                for the details you feel but can't name.
+              </div>
+              <div class="d1-nav">
+                <a href="#" class="active">Projects</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+                <a href="#" style="color: var(--accent)">CV ↗</a>
+              </div>
+            </div>
+            <div class="d1-projects">
+              <div class="d1-project-card">
+                <div>
+                  <div class="d1-project-title">StreamPay Dashboard</div>
+                  <div class="d1-project-meta">
+                    React · TypeScript · D3.js — Real-time payment analytics
+                  </div>
+                </div>
+                <div class="d1-project-arrow">→</div>
+              </div>
+              <div class="d1-project-card">
+                <div>
+                  <div class="d1-project-title">NoteGraph</div>
+                  <div class="d1-project-meta">
+                    Next.js · Tailwind · GSAP — Knowledge management tool
+                  </div>
+                </div>
+                <div class="d1-project-arrow">→</div>
+              </div>
+              <div class="d1-project-card">
+                <div>
+                  <div class="d1-project-title">ClimateLens</div>
+                  <div class="d1-project-meta">
+                    Vue 3 · MapboxGL · Python — Environmental data visualization
+                  </div>
+                </div>
+                <div class="d1-project-arrow">→</div>
+              </div>
+              <div class="d1-project-card">
+                <div>
+                  <div class="d1-project-title">Pulse Design System</div>
+                  <div class="d1-project-meta">
+                    React · Storybook · Figma — Component library for SaaS
+                  </div>
+                </div>
+                <div class="d1-project-arrow">→</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="direction-notes">
+        <h3>Design Notes</h3>
+        <div class="notes-grid">
+          <div class="note-card">
+            <h4>Layout</h4>
+            <p>
+              Single column. Generous left padding. Projects as horizontal lines — title, meta,
+              arrow. No cards, no thumbnails.
+            </p>
+            <span class="tag tag-strength">Maximally minimal</span>
+          </div>
+          <div class="note-card">
+            <h4>Mobile Behavior</h4>
+            <p>
+              Already mobile-ready by nature. The vertical list scales perfectly to phone screens.
+              Zero layout adaptation needed.
+            </p>
+            <span class="tag tag-strength">Mobile-native</span>
+          </div>
+          <div class="note-card">
+            <h4>Concern</h4>
+            <p>
+              May feel too sparse for recruiter audiences. No visual differentiation between
+              projects. Relies entirely on text.
+            </p>
+            <span class="tag tag-concern">Low visual richness</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIRECTION 2: CARD GRID -->
+    <section class="direction-section" id="direction-2">
+      <div class="direction-header">
+        <div class="label">Direction 02</div>
+        <h2>Card Grid</h2>
+        <p>
+          Centered hero with a 2-column card grid for projects. Each card shows title, description,
+          and tech badges. The most conventional portfolio layout — executed with precision.
+        </p>
+      </div>
+
+      <div class="mockup-frame">
+        <div class="mockup-container">
+          <div class="mockup-browser-bar">
+            <div class="browser-dot red"></div>
+            <div class="browser-dot yellow"></div>
+            <div class="browser-dot green"></div>
+            <div class="browser-url">baobao.dev</div>
+          </div>
+          <div class="mockup-content">
+            <div class="d2-topbar">
+              <div class="d2-logo">bao<span>.</span>dev</div>
+              <div class="d2-nav">
+                <a href="#">Projects</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+              </div>
+            </div>
+            <div class="d2-hero">
+              <h1>BaoBao</h1>
+              <p>
+                Frontend developer who builds precise, performant interfaces. Currently crafting
+                with Next.js, Tailwind CSS, and GSAP.
+              </p>
+            </div>
+            <div class="d2-grid">
+              <div class="d2-card">
+                <div class="d2-card-title">StreamPay Dashboard</div>
+                <div class="d2-card-desc">
+                  Real-time payment analytics platform processing 2M+ daily transactions with
+                  interactive D3.js visualizations.
+                </div>
+                <div class="d2-badges">
+                  <span class="badge">React</span>
+                  <span class="badge">TypeScript</span>
+                  <span class="badge blue">D3.js</span>
+                </div>
+              </div>
+              <div class="d2-card">
+                <div class="d2-card-title">NoteGraph</div>
+                <div class="d2-card-desc">
+                  Knowledge management tool with bidirectional linking and graph visualization for
+                  connected thinking.
+                </div>
+                <div class="d2-badges">
+                  <span class="badge">Next.js</span>
+                  <span class="badge">Tailwind</span>
+                  <span class="badge yellow">GSAP</span>
+                </div>
+              </div>
+              <div class="d2-card">
+                <div class="d2-card-title">ClimateLens</div>
+                <div class="d2-card-desc">
+                  Environmental data visualization platform mapping real-time climate data across
+                  50+ global monitoring stations.
+                </div>
+                <div class="d2-badges">
+                  <span class="badge">Vue 3</span>
+                  <span class="badge blue">MapboxGL</span>
+                  <span class="badge">Python</span>
+                </div>
+              </div>
+              <div class="d2-card">
+                <div class="d2-card-title">Pulse Design System</div>
+                <div class="d2-card-desc">
+                  50+ component library with full Storybook documentation, Figma parity, and
+                  automated visual regression testing.
+                </div>
+                <div class="d2-badges">
+                  <span class="badge">React</span>
+                  <span class="badge yellow">Storybook</span>
+                  <span class="badge">Figma</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="direction-notes">
+        <h3>Design Notes</h3>
+        <div class="notes-grid">
+          <div class="note-card">
+            <h4>Layout</h4>
+            <p>
+              Centered content. 2-column card grid. Each card has enough room for title,
+              description, and badges. Hover lifts card.
+            </p>
+            <span class="tag tag-strength">Scannable</span>
+          </div>
+          <div class="note-card">
+            <h4>Recruiter-Friendly</h4>
+            <p>
+              Tech badges visible at a glance. Description gives outcome context. The layout matches
+              what recruiters expect from portfolios.
+            </p>
+            <span class="tag tag-strength">High clarity</span>
+          </div>
+          <div class="note-card">
+            <h4>Concern</h4>
+            <p>
+              Most conventional direction. Risk of feeling "standard" unless the typography and
+              micro-interactions do heavy lifting.
+            </p>
+            <span class="tag tag-concern">Less distinctive</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIRECTION 3: TERMINAL -->
+    <section class="direction-section" id="direction-3">
+      <div class="direction-header">
+        <div class="label">Direction 03</div>
+        <h2>Terminal</h2>
+        <p>
+          The portfolio presented as a terminal session. Commands reveal content. The most committed
+          coding-vibe direction — deeply authentic for developer audiences, potentially alienating
+          for recruiters.
+        </p>
+      </div>
+
+      <div class="mockup-frame">
+        <div class="mockup-container">
+          <div class="mockup-browser-bar">
+            <div class="browser-dot red"></div>
+            <div class="browser-dot yellow"></div>
+            <div class="browser-dot green"></div>
+            <div class="browser-url">baobao.dev</div>
+          </div>
+          <div class="mockup-content">
+            <div class="d3-terminal">
+              <div>
+                <span class="d3-prompt">baobao@dev ~ $</span>
+                <span class="d3-command">whoami</span>
+              </div>
+              <div class="d3-output">
+                BaoBao — Frontend Developer<br />
+                Building precise, performant interfaces since 2020.<br />
+                Stack: Next.js · TypeScript · Tailwind CSS · GSAP
+              </div>
+
+              <div>
+                <span class="d3-prompt">baobao@dev ~ $</span>
+                <span class="d3-command">ls projects/</span>
+              </div>
+              <div class="d3-section">
+                <div class="d3-project-line">
+                  <span class="idx">01</span>
+                  <span class="name">StreamPay</span>
+                  <span class="desc">Real-time payment analytics · React + D3.js</span>
+                </div>
+                <div class="d3-project-line">
+                  <span class="idx">02</span>
+                  <span class="name">NoteGraph</span>
+                  <span class="desc">Knowledge management · Next.js + GSAP</span>
+                </div>
+                <div class="d3-project-line">
+                  <span class="idx">03</span>
+                  <span class="name">ClimateLens</span>
+                  <span class="desc">Environmental data viz · Vue 3 + MapboxGL</span>
+                </div>
+                <div class="d3-project-line">
+                  <span class="idx">04</span>
+                  <span class="name">Pulse</span>
+                  <span class="desc">Design system · React + Storybook</span>
+                </div>
+              </div>
+
+              <div style="margin-top: 32px">
+                <span class="d3-prompt">baobao@dev ~ $</span>
+                <span class="d3-command">cat contact.md</span>
+              </div>
+              <div class="d3-output">
+                email: hello@baobao.dev<br />
+                github: github.com/baobao<br />
+                status:
+                <span style="color: var(--accent)">open to opportunities</span>
+              </div>
+
+              <div>
+                <span class="d3-prompt">baobao@dev ~ $</span>
+                <span class="d3-cursor"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="direction-notes">
+        <h3>Design Notes</h3>
+        <div class="notes-grid">
+          <div class="note-card">
+            <h4>Authenticity</h4>
+            <p>
+              The most committed coding-vibe direction. Developers will love it. The terminal IS the
+              design — no pretense, no decoration.
+            </p>
+            <span class="tag tag-strength">Maximum developer signal</span>
+          </div>
+          <div class="note-card">
+            <h4>Concern</h4>
+            <p>
+              Recruiters may not "get it." Maya scanning QR on her phone sees a terminal — does she
+              recognize quality, or confusion?
+            </p>
+            <span class="tag tag-concern">Audience mismatch risk</span>
+          </div>
+          <div class="note-card">
+            <h4>Hybrid Potential</h4>
+            <p>
+              Works beautifully as an Easter egg or entrance animation — but probably not as the
+              only navigation paradigm.
+            </p>
+            <span class="tag tag-neutral">Best as accent, not base</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIRECTION 4: SPLIT PANEL -->
+    <section class="direction-section" id="direction-4">
+      <div class="direction-header">
+        <div class="label">Direction 04</div>
+        <h2>Split Panel</h2>
+        <p>
+          IDE-inspired two-panel layout. Fixed sidebar with identity and navigation. Scrollable main
+          panel for content. Mirrors VS Code's explorer + editor paradigm.
+        </p>
+      </div>
+
+      <div class="mockup-frame">
+        <div class="mockup-container">
+          <div class="mockup-browser-bar">
+            <div class="browser-dot red"></div>
+            <div class="browser-dot yellow"></div>
+            <div class="browser-dot green"></div>
+            <div class="browser-url">baobao.dev</div>
+          </div>
+          <div class="mockup-content">
+            <div class="d4-layout">
+              <div class="d4-sidebar">
+                <div>
+                  <div class="d4-sidebar-name">BaoBao</div>
+                  <div class="d4-sidebar-role">Frontend Developer</div>
+                </div>
+                <nav class="d4-sidebar-nav">
+                  <a href="#">// home</a>
+                  <a href="#" class="active">// projects</a>
+                  <a href="#">// about</a>
+                  <a href="#">// contact</a>
+                  <a href="#" style="margin-top: 8px; color: var(--accent)">↗ download CV</a>
+                </nav>
+                <div class="d4-sidebar-contact">
+                  <a href="#">hello@baobao.dev</a><br />
+                  <span style="color: var(--accent); font-size: 11px">● open to work</span>
+                </div>
+              </div>
+              <div class="d4-main">
+                <h2>// projects</h2>
+                <div class="d4-project-item">
+                  <h3>StreamPay Dashboard</h3>
+                  <p>Real-time payment analytics platform processing 2M+ daily transactions.</p>
+                  <div class="d2-badges">
+                    <span class="badge">React</span>
+                    <span class="badge">TypeScript</span>
+                    <span class="badge blue">D3.js</span>
+                  </div>
+                </div>
+                <div class="d4-project-item">
+                  <h3>NoteGraph</h3>
+                  <p>Knowledge management with bidirectional linking and graph visualization.</p>
+                  <div class="d2-badges">
+                    <span class="badge">Next.js</span>
+                    <span class="badge">Tailwind</span>
+                    <span class="badge yellow">GSAP</span>
+                  </div>
+                </div>
+                <div class="d4-project-item">
+                  <h3>ClimateLens</h3>
+                  <p>Environmental data visualization across 50+ global monitoring stations.</p>
+                  <div class="d2-badges">
+                    <span class="badge">Vue 3</span>
+                    <span class="badge blue">MapboxGL</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="direction-notes">
+        <h3>Design Notes</h3>
+        <div class="notes-grid">
+          <div class="note-card">
+            <h4>IDE Metaphor</h4>
+            <p>
+              Developers instantly recognize the layout. Sidebar = explorer. Main panel = editor.
+              Contact always visible. Strong mental model match.
+            </p>
+            <span class="tag tag-strength">Familiar paradigm</span>
+          </div>
+          <div class="note-card">
+            <h4>Concern</h4>
+            <p>
+              Sidebar layout doesn't translate well to mobile. Requires a fundamentally different
+              mobile layout — added complexity.
+            </p>
+            <span class="tag tag-concern">Mobile adaptation needed</span>
+          </div>
+          <div class="note-card">
+            <h4>Contact Visibility</h4>
+            <p>
+              Email and availability always visible in the sidebar. Zero friction to contact.
+              Strongest CTA placement of all directions.
+            </p>
+            <span class="tag tag-strength">Always-visible CTA</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIRECTION 5: TYPE-DRIVEN -->
+    <section class="direction-section" id="direction-5">
+      <div class="direction-header">
+        <div class="label">Direction 05</div>
+        <h2>Type-Driven / Editorial</h2>
+        <p>
+          Typography IS the design. Newspaper-inspired grid with editorial hierarchy. Name as
+          masthead, projects as articles. The most visually distinctive direction.
+        </p>
+      </div>
+
+      <div class="mockup-frame">
+        <div class="mockup-container">
+          <div class="mockup-browser-bar">
+            <div class="browser-dot red"></div>
+            <div class="browser-dot yellow"></div>
+            <div class="browser-dot green"></div>
+            <div class="browser-url">baobao.dev</div>
+          </div>
+          <div class="mockup-content">
+            <div class="d5-header">
+              <div class="d5-masthead">BAOBAO</div>
+              <div class="d5-dateline">Frontend Developer · Issue No. 1 · 2026</div>
+              <div class="d5-nav-strip">
+                <a href="#">Projects</a>
+                <a href="#">About</a>
+                <a href="#">Process</a>
+                <a href="#">Contact</a>
+              </div>
+            </div>
+            <div class="d5-body">
+              <div>
+                <div class="d5-headline">
+                  Building Precise, Performant Interfaces for the Modern Web
+                </div>
+                <div class="d5-byline">
+                  Next.js · TypeScript · Tailwind CSS · GSAP / Framer Motion
+                </div>
+                <div class="d5-article-text">
+                  I build interfaces that feel inevitable — where every transition, every spacing
+                  decision, every line of markup serves a purpose. Currently focused on React
+                  ecosystems with Next.js, performance-first architecture, and animation systems
+                  that respect both craft and constraint.
+                  <br /><br />
+                  The portfolio you're reading is itself the strongest evidence: built with the same
+                  tools and attention I bring to every project. Inspect the source. Open DevTools.
+                  The code is the resume.
+                </div>
+              </div>
+              <div class="d5-sidebar-section">
+                <div class="d5-sidebar-title">Selected Work</div>
+                <div class="d5-sidebar-item">
+                  <h4>StreamPay Dashboard</h4>
+                  <p>React · TypeScript · D3.js</p>
+                </div>
+                <div class="d5-sidebar-item">
+                  <h4>NoteGraph</h4>
+                  <p>Next.js · Tailwind · GSAP</p>
+                </div>
+                <div class="d5-sidebar-item">
+                  <h4>ClimateLens</h4>
+                  <p>Vue 3 · MapboxGL · Python</p>
+                </div>
+                <div class="d5-sidebar-item">
+                  <h4>Pulse Design System</h4>
+                  <p>React · Storybook · Figma</p>
+                </div>
+                <div style="margin-top: 24px">
+                  <div class="d5-sidebar-title">Status</div>
+                  <div style="font-size: 12px; color: var(--accent)">● Open to opportunities</div>
+                  <div style="font-size: 11px; color: var(--text-tertiary); margin-top: 4px">
+                    hello@baobao.dev
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="direction-notes">
+        <h3>Design Notes</h3>
+        <div class="notes-grid">
+          <div class="note-card">
+            <h4>Visual Distinction</h4>
+            <p>
+              No other developer portfolio looks like this. The editorial layout is immediately
+              memorable. Typography carries the full visual weight.
+            </p>
+            <span class="tag tag-strength">Highly distinctive</span>
+          </div>
+          <div class="note-card">
+            <h4>Concern</h4>
+            <p>
+              The newspaper metaphor may confuse rather than delight. Some users may not understand
+              it's a portfolio at first glance.
+            </p>
+            <span class="tag tag-concern">Recognition risk</span>
+          </div>
+          <div class="note-card">
+            <h4>Content Density</h4>
+            <p>
+              Naturally supports longer-form content. Good for BaoBao if project case studies are
+              detailed. May overwhelm scan-readers.
+            </p>
+            <span class="tag tag-neutral">Content-dependent</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIRECTION 6: STATUS BAR + CLEAN -->
+    <section class="direction-section" id="direction-6">
+      <div class="direction-header">
+        <div class="label">Direction 06 — Recommended</div>
+        <h2>Status Bar + Clean</h2>
+        <p>
+          The synthesis direction. Clean card grid with IDE-inspired status bar footer, command
+          palette hint, and minimal nav. Balances recruiter clarity with developer delight. The best
+          of directions 2 + 4.
+        </p>
+      </div>
+
+      <div class="mockup-frame">
+        <div class="mockup-container">
+          <div class="mockup-browser-bar">
+            <div class="browser-dot red"></div>
+            <div class="browser-dot yellow"></div>
+            <div class="browser-dot green"></div>
+            <div class="browser-url">baobao.dev</div>
+          </div>
+          <div class="mockup-content">
+            <div class="d6-status-bar">
+              <div class="d6-status-left">
+                <div class="d6-status-indicator">
+                  <div class="d6-dot"></div>
+                  open to work
+                </div>
+              </div>
+              <div class="d6-status-right">
+                <span>⌘K to navigate</span>
+              </div>
+            </div>
+            <div
+              style="
+                padding: 16px 48px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border-bottom: 1px solid var(--border-subtle);
+              "
+            >
+              <div style="font-size: 14px; font-weight: 700">
+                bao<span style="color: var(--accent)">.</span>dev
+              </div>
+              <div style="display: flex; gap: 24px">
+                <a
+                  href="#"
+                  style="font-size: 12px; color: var(--text-tertiary); text-decoration: none"
+                  >Projects</a
+                >
+                <a
+                  href="#"
+                  style="font-size: 12px; color: var(--text-tertiary); text-decoration: none"
+                  >About</a
+                >
+                <a
+                  href="#"
+                  style="font-size: 12px; color: var(--text-tertiary); text-decoration: none"
+                  >Contact</a
+                >
+              </div>
+            </div>
+            <div class="d6-hero">
+              <div class="label">// hello world</div>
+              <h1>I'm BaoBao.<br />I build interfaces that<br />feel <span>inevitable</span>.</h1>
+              <p>
+                Frontend developer specializing in Next.js, TypeScript, and animation systems. The
+                craft is in the details you feel but can't name.
+              </p>
+              <div class="d6-cta-row">
+                <a class="d6-btn d6-btn-primary" href="#">View Projects</a>
+                <a class="d6-btn d6-btn-secondary" href="#">Download CV</a>
+              </div>
+            </div>
+            <div class="d6-projects-section">
+              <div class="d6-section-header">
+                <h2>// selected work</h2>
+                <span class="d6-kbd">⌘K</span>
+              </div>
+              <div class="d6-project-grid">
+                <div class="d6-project-card">
+                  <h3>StreamPay Dashboard</h3>
+                  <p>Real-time payment analytics for 2M+ daily transactions</p>
+                  <div class="d2-badges">
+                    <span class="badge">React</span>
+                    <span class="badge">TypeScript</span>
+                    <span class="badge blue">D3.js</span>
+                  </div>
+                </div>
+                <div class="d6-project-card">
+                  <h3>NoteGraph</h3>
+                  <p>Knowledge management with graph visualization</p>
+                  <div class="d2-badges">
+                    <span class="badge">Next.js</span>
+                    <span class="badge">Tailwind</span>
+                    <span class="badge yellow">GSAP</span>
+                  </div>
+                </div>
+                <div class="d6-project-card">
+                  <h3>ClimateLens</h3>
+                  <p>Environmental data mapping across 50+ stations</p>
+                  <div class="d2-badges">
+                    <span class="badge">Vue 3</span>
+                    <span class="badge blue">MapboxGL</span>
+                  </div>
+                </div>
+                <div class="d6-project-card">
+                  <h3>Pulse Design System</h3>
+                  <p>50+ component library with Storybook + Figma</p>
+                  <div class="d2-badges">
+                    <span class="badge">React</span>
+                    <span class="badge yellow">Storybook</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="d6-footer">
+              <div class="d6-footer-left">
+                <span>main</span>
+                <span>Next.js 16</span>
+                <span>Tailwind v4</span>
+              </div>
+              <div class="d6-footer-right">
+                <span>// projects</span>
+                <span>UTF-8</span>
+                <span style="color: var(--accent)">●</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="direction-notes">
+        <h3>Design Notes</h3>
+        <div class="notes-grid">
+          <div class="note-card">
+            <h4>Best of Both</h4>
+            <p>
+              Clean card grid for recruiter scannability. Status bar + ⌘K hint for developer
+              recognition. Neither audience is compromised.
+            </p>
+            <span class="tag tag-strength">Dual-audience balance</span>
+          </div>
+          <div class="note-card">
+            <h4>Developer Signals</h4>
+            <p>
+              Status bar footer (branch, stack, encoding). ⌘K badge in section header. "// comments"
+              as section labels. Subtle, not theatrical.
+            </p>
+            <span class="tag tag-strength">Authentic coding vibe</span>
+          </div>
+          <div class="note-card">
+            <h4>Mobile Path</h4>
+            <p>
+              Status bar becomes a thin top stripe on mobile. Cards stack to single column. Nav
+              remains visible. Footer hides on mobile — desktop-only delight.
+            </p>
+            <span class="tag tag-strength">Clean mobile adaptation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function showDirection(num) {
+        document
+          .querySelectorAll(".direction-section")
+          .forEach((s) => s.classList.remove("active"));
+        document.querySelectorAll(".direction-btn").forEach((b) => b.classList.remove("active"));
+        document.getElementById("direction-" + num).classList.add("active");
+        document.querySelectorAll(".direction-btn")[num - 1].classList.add("active");
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>
