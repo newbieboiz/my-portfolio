@@ -29,7 +29,13 @@ classification:
   complexity: "medium"
   projectContext: "greenfield"
   primaryGoal: "This person is hireable"
-  primaryAudience: ["potential employers", "freelance clients", "collaborators", "general public"]
+  primaryAudience:
+    [
+      "potential employers",
+      "freelance clients",
+      "collaborators",
+      "general public",
+    ]
   techStack: ["Next.js 16", "Tailwind CSS v4", "GSAP", "Framer Motion"]
 ---
 
