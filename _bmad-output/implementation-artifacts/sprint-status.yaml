@@ -1,0 +1,101 @@
+# generated: 2026-05-14
+# last_updated: 2026-05-14
+# project: my-portfolio
+# project_key: NOKEY
+# tracking_system: file-system
+# story_location: _bmad-output/implementation-artifacts
+
+# STATUS DEFINITIONS:
+# ==================
+# Epic Status:
+#   - backlog: Epic not yet started
+#   - in-progress: Epic actively being worked on
+#   - done: All stories in epic completed
+#
+# Epic Status Transitions:
+#   - backlog → in-progress: Automatically when first story is created (via create-story)
+#   - in-progress → done: Manually when all stories reach 'done' status
+#
+# Story Status:
+#   - backlog: Story only exists in epic file
+#   - ready-for-dev: Story file created in stories folder
+#   - in-progress: Developer actively working on implementation
+#   - review: Ready for code review (via Dev's code-review workflow)
+#   - done: Story completed
+#
+# Retrospective Status:
+#   - optional: Can be completed but not required
+#   - done: Retrospective has been completed
+#
+# WORKFLOW NOTES:
+# ===============
+# - Epic transitions to 'in-progress' automatically when first story is created
+# - Stories can be worked in parallel if team capacity allows
+# - Developer typically creates next story after previous one is 'done' to incorporate learnings
+# - Dev moves story to 'review', then runs code-review (fresh context, different LLM recommended)
+
+generated: 2026-05-14
+last_updated: 2026-05-14
+project: my-portfolio
+project_key: NOKEY
+tracking_system: file-system
+story_location: _bmad-output/implementation-artifacts
+
+development_status:
+  # Epic 1: Project Foundation & Design System
+  epic-1: backlog
+  1-1-project-initialization-tooling-setup: backlog
+  1-2-tailwind-design-token-layer: backlog
+  1-3-content-data-schema-typescript-interfaces-seed-data: backlog
+  1-4-sectionlayout-component: backlog
+  epic-1-retrospective: optional
+
+  # Epic 2: Portfolio Shell & Core Navigation
+  epic-2: backlog
+  2-1-root-layout-statusstripe-navbar: backlog
+  2-2-footer-status-bar: backlog
+  2-3-page-shell-empty-section-stubs-vercel-deployment: backlog
+  epic-2-retrospective: optional
+
+  # Epic 3: Core Portfolio Content
+  epic-3: backlog
+  3-1-badge-component: backlog
+  3-2-hero-section: backlog
+  3-3-projectcard-component-projects-section: backlog
+  3-4-about-page-bio-skills-experience: backlog
+  3-5-contact-page: backlog
+  epic-3-retrospective: optional
+
+  # Epic 4: Project Case Studies (MDX Deep-Dives)
+  epic-4: backlog
+  4-1-mdx-processing-infrastructure: backlog
+  4-2-project-detail-page: backlog
+  epic-4-retrospective: optional
+
+  # Epic 5: Developer Experience Layer (Command Palette)
+  epic-5: backlog
+  5-1-command-palette-component-cmdk: backlog
+  5-2-keyboard-navigation-shortcuts: backlog
+  epic-5-retrospective: optional
+
+  # Epic 6: Animation & Craft Layer
+  epic-6: backlog
+  6-1-reduced-motion-infrastructure-usereducedmotion-hook: backlog
+  6-2-gsap-scroll-triggered-entrance-animations: backlog
+  6-3-framer-motion-page-transitions: backlog
+  6-4-hover-micro-interactions-project-card-hover-reveal: backlog
+  epic-6-retrospective: optional
+
+  # Epic 7: CV Export & QR Bridge
+  epic-7: backlog
+  7-1-qr-code-generation-utility: backlog
+  7-2-cv-pdf-document-components: backlog
+  7-3-cv-download-button-client-side-export: backlog
+  epic-7-retrospective: optional
+
+  # Epic 8: SEO & Discoverability
+  epic-8: backlog
+  8-1-per-page-metadata-canonical-urls: backlog
+  8-2-open-graph-tags-social-preview-images: backlog
+  8-3-sitemap-robots-txt-person-schema: backlog
+  epic-8-retrospective: optional
