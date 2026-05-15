@@ -45,7 +45,7 @@ development_status:
   # Epic 1: Project Foundation & Design System
   epic-1: in-progress
   1-1-project-initialization-tooling-setup: done
-  1-2-tailwind-design-token-layer: backlog
+  1-2-tailwind-design-token-layer: done
   1-3-content-data-schema-typescript-interfaces-seed-data: backlog
   1-4-sectionlayout-component: backlog
   epic-1-retrospective: optional

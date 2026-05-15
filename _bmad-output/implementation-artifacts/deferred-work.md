@@ -9,3 +9,7 @@
 - `NEXT_PUBLIC_SITE_URL` not validated at startup — add a startup guard when QR/OG/sitemap features are implemented
 - `allowJs: true` without `checkJs: true` in `tsconfig.json` — scaffold default; consider enabling `checkJs` in a future TypeScript hygiene story
 - No test infrastructure — out of scope for story 1-1; add test runner + baseline tests in a dedicated testing-setup story
+
+## Deferred from: code review of 1-2-tailwind-design-token-layer (2026-05-14)
+
+- Starter template light-surface classes (`bg-zinc-50`, `bg-white`, `text-black` with `dark:*` overrides) can conflict with dark-first intent; defer full page shell cleanup to later content/shell stories.

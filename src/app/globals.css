@@ -1,26 +1,200 @@
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────
+   DESIGN TOKENS — CSS Custom Properties
+   Source of truth for all visual decisions
+   ──────────────────────────────────────────── */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Background scale */
+  --bg-primary: #0a0a0f;
+  --bg-secondary: #12121a;
+  --bg-tertiary: #1a1a25;
+
+  /* Border tokens */
+  --border-subtle: #2a2a3a;
+  --border-active: #3a3a50;
+
+  /* Accent — surgical green */
+  --accent: #00dc82;
+  --accent-hover: #00ff96;
+  --accent-muted: #00dc8220;
+  --accent-glow: #00dc8215;
+
+  /* Text hierarchy */
+  --text-primary: #e8e8ed;
+  --text-secondary: #a0a0b0;
+  --text-tertiary: #6b6b80;
+  --text-muted: #45455a;
+
+  /* Semantic colors */
+  --success: #00dc82;
+  --warning: #ffb224;
+  --error: #ff6b6b;
+  --info: #60a5fa;
+
+  /* Spacing scale (4px base grid) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-24: 96px;
+  --space-32: 128px;
+
+  /* Motion tokens */
+  --duration-micro: 150ms;
+  --duration-transition: 250ms;
+  --duration-entrance: 400ms;
+  --ease-entrance: cubic-bezier(0, 0, 0.2, 1); /* ease-out */
+  --ease-state: cubic-bezier(0.4, 0, 0.2, 1); /* ease-in-out */
+
+  /* Layout constants */
+  --max-content-width: 1120px;
+  --prose-max-width: 680px;
 }
 
+/* ─────────────────────────────────────────────
+   TAILWIND v4 THEME — Maps tokens to utilities
+   @theme inline preserves CSS variable refs
+   ──────────────────────────────────────────── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  /* Font family — Geist Mono is sole typeface */
   --font-mono: var(--font-geist-mono);
+  /* Compatibility aliases for starter template classes during migration */
+  --font-sans: var(--font-mono);
+  --color-background: var(--bg-primary);
+  --color-foreground: var(--text-primary);
+
+  /* Color palette → bg-*, text-*, border-* utilities */
+  --color-bg-primary: var(--bg-primary);
+  --color-bg-secondary: var(--bg-secondary);
+  --color-bg-tertiary: var(--bg-tertiary);
+  --color-border-subtle: var(--border-subtle);
+  --color-border-active: var(--border-active);
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-muted: var(--accent-muted);
+  --color-accent-glow: var(--accent-glow);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-tertiary: var(--text-tertiary);
+  --color-text-muted: var(--text-muted);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-error: var(--error);
+  --color-info: var(--info);
 }
 
-@media (prefers-color-scheme: dark) {
+/* ─────────────────────────────────────────────
+   TAILWIND v4 THEME — Typography scale
+   text-hero, text-h1, etc.
+   ──────────────────────────────────────────── */
+@theme {
+  /* Font sizes — desktop default */
+  --text-hero: 3.5rem; /* 56px */
+  --text-h1: 2.625rem; /* 42px */
+  --text-h2: 2rem; /* 32px */
+  --text-h3: 1.5rem; /* 24px */
+  --text-body: 1rem; /* 16px */
+  --text-small: 0.875rem; /* 14px */
+  --text-xs: 0.75rem; /* 12px */
+  --text-code: 0.875rem; /* 14px */
+
+  /* Line heights */
+  --leading-hero: 1.1;
+  --leading-h1: 1.15;
+  --leading-h2: 1.2;
+  --leading-h3: 1.3;
+  --leading-body: 1.6;
+  --leading-small: 1.5;
+  --leading-xs: 1.4;
+  --leading-code: 1.7;
+
+  /* Letter spacing */
+  --tracking-hero: -0.03em;
+  --tracking-heading: -0.02em;
+  --tracking-body: 0em;
+  --tracking-badge: 0.04em;
+
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Spacing tokens — accessible as p-space-4, gap-space-6, etc. */
+  --spacing-space-1: var(--space-1);
+  --spacing-space-2: var(--space-2);
+  --spacing-space-3: var(--space-3);
+  --spacing-space-4: var(--space-4);
+  --spacing-space-6: var(--space-6);
+  --spacing-space-8: var(--space-8);
+  --spacing-space-12: var(--space-12);
+  --spacing-space-16: var(--space-16);
+  --spacing-space-24: var(--space-24);
+  --spacing-space-32: var(--space-32);
+
+  /* Transition durations → duration-micro, duration-transition, duration-entrance */
+  --transition-duration-micro: var(--duration-micro);
+  --transition-duration-transition: var(--duration-transition);
+  --transition-duration-entrance: var(--duration-entrance);
+
+  /* Easing */
+  --ease-entrance: cubic-bezier(0, 0, 0.2, 1);
+  --ease-state: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout constants — accessible as max-w-content, max-w-prose */
+  --width-content: 1120px;
+  --width-prose: 680px;
+}
+
+/* Mobile typography reductions required by AC4 */
+@media (max-width: 40rem) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --text-hero: 2.25rem;
+    --text-h1: 1.75rem;
   }
 }
 
+/* ─────────────────────────────────────────────
+   BASE STYLES
+   Dark-first — no light mode for v1
+   ──────────────────────────────────────────── */
+html {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family:
+    var(--font-mono), "JetBrains Mono", "Fira Code", "SF Mono", "Consolas",
+    monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: var(--leading-body);
+}
+
+/* ─────────────────────────────────────────────
+   MOTION ACCESSIBILITY
+   Reduced motion: instant transitions
+   ──────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-micro: 0ms;
+    --duration-transition: 0ms;
+    --duration-entrance: 0ms;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
