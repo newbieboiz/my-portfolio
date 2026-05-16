@@ -19,7 +19,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistMono.variable} h-full antialiased`}>
-      <body className="flex min-h-full flex-col">{children}</body>
+      <body className="flex min-h-full flex-col">
+        <a
+          href="#main-content"
+          className="focus:bg-bg-secondary focus:text-accent focus:ring-accent focus:top-space-4 focus:left-space-4 focus:px-space-4 focus:py-space-2 focus:text-small sr-only focus:not-sr-only focus:fixed focus:z-50 focus:rounded focus:ring-1 focus:outline-none"
+        >
+          Skip to main content
+        </a>
+        <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col">
+          {children}
+        </main>
+      </body>
     </html>
   );
 }

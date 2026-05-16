@@ -13,3 +13,8 @@
 ## Deferred from: code review of 1-2-tailwind-design-token-layer (2026-05-14)
 
 - Starter template light-surface classes (`bg-zinc-50`, `bg-white`, `text-black` with `dark:*` overrides) can conflict with dark-first intent; defer full page shell cleanup to later content/shell stories.
+
+## Deferred from: code review of 1-4-sectionlayout-component (2026-05-16)
+
+- SectionLayout `id` values are accepted as raw strings without normalization or duplicate-id guardrails, which can become fragile when multiple data-driven sections are introduced; defer to a future robustness hardening story.
+- `// {label}` heading does not currently include explicit long-token wrapping safeguards for extreme/unbroken labels; defer stress-case typography handling to a future content-hardening story.
