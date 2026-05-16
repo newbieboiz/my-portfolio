@@ -1,0 +1,31 @@
+[
+  {
+    "slug": "portfolio-website",
+    "title": "Personal Portfolio",
+    "description": "Developer portfolio with terminal aesthetic and command palette navigation.",
+    "techStack": ["Next.js", "TypeScript", "Tailwind CSS", "GSAP"],
+    "outcome": "Live portfolio site with sub-1.5s FCP and keyboard-first navigation.",
+    "isFeatured": true,
+    "startDate": "2026-04",
+    "problem": "Needed a portfolio that communicates technical depth to a developer audience while remaining fast and accessible.",
+    "approach": "Built with Next.js App Router, custom Tailwind v4 design tokens, and a cmdk command palette for keyboard-first navigation.",
+    "result": "Achieved Lighthouse 95+ performance score with rich developer-oriented UX and a distinctive terminal aesthetic.",
+    "hasCodeSample": false,
+    "githubUrl": "https://github.com/baobao/my-portfolio"
+  },
+  {
+    "slug": "realtime-dashboard",
+    "title": "Real-Time Analytics Dashboard",
+    "description": "High-throughput analytics dashboard visualising live event streams for a SaaS product.",
+    "techStack": ["React", "TypeScript", "WebSockets", "D3.js", "Node.js"],
+    "outcome": "Reduced time-to-insight from 5 minutes to under 10 seconds for operational teams.",
+    "isFeatured": true,
+    "startDate": "2024-06",
+    "endDate": "2025-02",
+    "problem": "Operational teams were working off stale batch reports, missing real-time anomalies that caused customer-facing incidents.",
+    "approach": "Designed a WebSocket-powered data pipeline feeding a React dashboard with D3 visualisations, deployed on the existing Node.js infrastructure.",
+    "result": "Reduced mean-time-to-detect incidents by 70%; dashboard adopted by three internal teams within the first month.",
+    "hasCodeSample": true,
+    "projectUrl": "https://dashboard.example.com"
+  }
+]

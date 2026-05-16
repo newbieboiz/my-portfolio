@@ -1,0 +1,38 @@
+[
+  {
+    "category": "Frontend",
+    "skills": [
+      { "name": "React", "level": "expert" },
+      { "name": "TypeScript", "level": "expert" },
+      { "name": "Next.js", "level": "advanced" },
+      { "name": "HTML & CSS", "level": "expert" }
+    ]
+  },
+  {
+    "category": "Styling & Design",
+    "skills": [
+      { "name": "Tailwind CSS", "level": "expert" },
+      { "name": "CSS Animations", "level": "advanced" },
+      { "name": "GSAP", "level": "intermediate" },
+      { "name": "Framer Motion", "level": "intermediate" }
+    ]
+  },
+  {
+    "category": "Backend & Data",
+    "skills": [
+      { "name": "Node.js", "level": "advanced" },
+      { "name": "PostgreSQL", "level": "advanced" },
+      { "name": "REST APIs", "level": "expert" },
+      { "name": "GraphQL", "level": "intermediate" }
+    ]
+  },
+  {
+    "category": "Tooling & DevOps",
+    "skills": [
+      { "name": "Git", "level": "advanced" },
+      { "name": "pnpm", "level": "intermediate" },
+      { "name": "Vercel", "level": "advanced" },
+      { "name": "Docker", "level": "intermediate" }
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "owner": {
+    "name": "BaoBao",
+    "title": "Full-Stack Engineer",
+    "email": "hello@baobao.dev",
+    "isAvailable": true,
+    "availabilityText": "Open to new opportunities"
+  },
+  "social": {
+    "github": "https://github.com/baobao",
+    "linkedin": "https://linkedin.com/in/baobao"
+  },
+  "navigation": [
+    { "label": "Projects", "href": "/projects" },
+    { "label": "About", "href": "/about" },
+    { "label": "Contact", "href": "/contact" }
+  ]
+}

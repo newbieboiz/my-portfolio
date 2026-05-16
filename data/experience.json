@@ -1,0 +1,36 @@
+[
+  {
+    "company": "Acme Corp",
+    "title": "Senior Full-Stack Engineer",
+    "startDate": "2022-03",
+    "isCurrent": true,
+    "description": "Lead engineer on the core product team, responsible for frontend architecture and full-stack feature delivery.",
+    "achievements": [
+      "Reduced page load time by 40% by migrating the legacy CRA app to Next.js App Router.",
+      "Introduced TypeScript strict mode across the frontend monorepo, eliminating a class of runtime errors.",
+      "Mentored two junior engineers, bringing them to independent feature delivery within six months."
+    ],
+    "techStack": [
+      "Next.js",
+      "TypeScript",
+      "React",
+      "Node.js",
+      "PostgreSQL",
+      "Tailwind CSS"
+    ]
+  },
+  {
+    "company": "Beta Studio",
+    "title": "Full-Stack Developer",
+    "startDate": "2019-07",
+    "endDate": "2022-02",
+    "isCurrent": false,
+    "description": "Full-stack developer on a small product team building B2B SaaS tools for the logistics industry.",
+    "achievements": [
+      "Built and shipped a real-time shipment tracking feature used by 500+ daily active users.",
+      "Led a successful Rails-to-Node.js migration of the API layer with zero downtime.",
+      "Improved test coverage from 30% to 80%, reducing regression incidents by half."
+    ],
+    "techStack": ["React", "Ruby on Rails", "Node.js", "TypeScript", "MySQL"]
+  }
+]
