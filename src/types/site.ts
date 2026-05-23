@@ -29,4 +29,10 @@ export interface SiteConfig {
     twitter?: string;
   };
   navigation: NavigationItem[];
+  footer: {
+    branch: string;
+    framework: string;
+    cssFramework: string;
+    encoding: string;
+  };
 }

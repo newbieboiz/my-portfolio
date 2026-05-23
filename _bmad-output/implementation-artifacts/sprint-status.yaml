@@ -53,7 +53,7 @@ development_status:
   # Epic 2: Portfolio Shell & Core Navigation
   epic-2: in-progress
   2-1-root-layout-statusstripe-navbar: done
-  2-2-footer-status-bar: backlog
+  2-2-footer-status-bar: done
   2-3-page-shell-empty-section-stubs-vercel-deployment: backlog
   epic-2-retrospective: optional
 

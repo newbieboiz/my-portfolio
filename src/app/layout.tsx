@@ -4,6 +4,7 @@ import "./globals.css";
 import { getSiteConfig } from "@/lib/data";
 import { StatusStripe } from "@/components/StatusStripe";
 import { NavBar } from "@/components/NavBar";
+import { Footer } from "@/components/Footer";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -36,6 +37,7 @@ export default function RootLayout({
         <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col">
           {children}
         </main>
+        <Footer config={siteConfig} />
       </body>
     </html>
   );
