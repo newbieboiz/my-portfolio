@@ -54,7 +54,7 @@ development_status:
   epic-2: in-progress
   2-1-root-layout-statusstripe-navbar: done
   2-2-footer-status-bar: done
-  2-3-page-shell-empty-section-stubs-vercel-deployment: backlog
+  2-3-page-shell-empty-section-stubs-vercel-deployment: done
   epic-2-retrospective: optional
 
   # Epic 3: Core Portfolio Content
