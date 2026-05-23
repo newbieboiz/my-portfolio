@@ -2,6 +2,7 @@
   "owner": {
     "name": "BaoBao",
     "title": "Full-Stack Engineer",
+    "bio": "Full-stack engineer with 6+ years of experience building modern web applications. I specialise in React and TypeScript, with a strong focus on performance, developer experience, and UI craft. I care about writing code that reads clearly, runs fast, and holds up over time.",
     "tagline": "I build interfaces that feel inevitable.",
     "email": "hello@baobao.dev",
     "isAvailable": true,
