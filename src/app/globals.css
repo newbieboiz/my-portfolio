@@ -198,3 +198,110 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* ─────────────────────────────────────────────
+   MDX PROSE STYLES
+   Targets rendered MDX HTML elements inside .mdx-prose
+   Code blocks: styled by rehype-pretty-code + Shiki (github-dark)
+   keepBackground: false in mdx.ts means pre bg = var(--bg-secondary)
+   ──────────────────────────────────────────── */
+
+.mdx-prose {
+  color: var(--text-secondary);
+  font-size: 1rem;
+  line-height: var(--leading-body);
+}
+
+.mdx-prose h2 {
+  color: var(--text-primary);
+  font-size: var(--text-h2);
+  font-weight: 600;
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--leading-h2);
+  margin-bottom: var(--space-4);
+  margin-top: var(--space-12);
+}
+
+.mdx-prose h3 {
+  color: var(--text-primary);
+  font-size: var(--text-h3);
+  font-weight: 600;
+  letter-spacing: var(--tracking-heading);
+  line-height: var(--leading-h3);
+  margin-bottom: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+.mdx-prose p {
+  margin-bottom: var(--space-4);
+}
+
+.mdx-prose ul,
+.mdx-prose ol {
+  margin-bottom: var(--space-4);
+  padding-left: var(--space-6);
+}
+
+.mdx-prose ul {
+  list-style-type: disc;
+}
+
+.mdx-prose ol {
+  list-style-type: decimal;
+}
+
+.mdx-prose li {
+  margin-bottom: var(--space-2);
+}
+
+.mdx-prose a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.mdx-prose a:hover {
+  color: var(--accent-hover);
+}
+
+/* Inline code — backtick spans (not inside pre) */
+.mdx-prose code:not(pre > code) {
+  background-color: var(--bg-tertiary);
+  border-radius: 4px;
+  color: var(--accent);
+  font-family: inherit;
+  font-size: var(--text-code);
+  padding: 2px 6px;
+}
+
+/* Code block container — rehype-pretty-code targets <figure> or <pre> */
+.mdx-prose pre {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  font-size: var(--text-code);
+  line-height: var(--leading-code);
+  margin-bottom: var(--space-6);
+  overflow-x: auto;
+  padding: var(--space-6);
+}
+
+.mdx-prose pre > code {
+  background-color: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+.mdx-prose hr {
+  border: none;
+  border-top: 1px solid var(--border-subtle);
+  margin: var(--space-8) 0;
+}
+
+.mdx-prose blockquote {
+  border-left: 2px solid var(--accent);
+  color: var(--text-tertiary);
+  font-style: italic;
+  margin-bottom: var(--space-4);
+  padding-left: var(--space-4);
+}

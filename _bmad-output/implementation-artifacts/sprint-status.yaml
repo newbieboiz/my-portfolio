@@ -69,7 +69,7 @@ development_status:
   # Epic 4: Project Case Studies (MDX Deep-Dives)
   epic-4: in-progress
   4-1-mdx-processing-infrastructure: done
-  4-2-project-detail-page: backlog
+  4-2-project-detail-page: done
   epic-4-retrospective: optional
 
   # Epic 5: Developer Experience Layer (Command Palette)
