@@ -58,9 +58,9 @@ development_status:
   epic-2-retrospective: optional
 
   # Epic 3: Core Portfolio Content
-  epic-3: backlog
-  3-1-badge-component: backlog
-  3-2-hero-section: backlog
+  epic-3: in-progress
+  3-1-badge-component: done
+  3-2-hero-section: done
   3-3-projectcard-component-projects-section: backlog
   3-4-about-page-bio-skills-experience: backlog
   3-5-contact-page: backlog

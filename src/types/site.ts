@@ -19,6 +19,7 @@ export interface SiteConfig {
   owner: {
     name: string;
     title: string;
+    tagline: string;
     email: string;
     isAvailable: boolean;
     availabilityText: string;

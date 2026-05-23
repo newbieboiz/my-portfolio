@@ -2,6 +2,7 @@
   "owner": {
     "name": "BaoBao",
     "title": "Full-Stack Engineer",
+    "tagline": "I build interfaces that feel inevitable.",
     "email": "hello@baobao.dev",
     "isAvailable": true,
     "availabilityText": "Open to new opportunities"
