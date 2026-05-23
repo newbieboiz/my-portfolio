@@ -1,0 +1,38 @@
+---
+title: Sample Project
+description: A demonstration project validating the MDX case study infrastructure.
+techStack:
+  - Next.js
+  - TypeScript
+  - Tailwind CSS
+outcome: Confirmed MDX processing infrastructure works end-to-end — build passes, slug resolves.
+isFeatured: false
+startDate: "2026-05"
+---
+
+## Problem
+
+This seed project exists to validate that the MDX processing pipeline is working correctly.
+The content layer must parse frontmatter, compile MDX body content, and make both available
+to Server Components for static generation at build time.
+
+## Approach
+
+Implemented `src/lib/mdx.ts` with two exports: `getAllProjectSlugs()` scans `content/projects/`
+for `.mdx` files; `getProjectBySlug(slug)` reads and compiles a single file using
+`next-mdx-remote/rsc`.
+
+```ts
+// Simplified view of the implementation pattern
+const source = await readFile(filePath, "utf8");
+const { content, frontmatter } = await compileMDX({
+  source,
+  options: { parseFrontmatter: true },
+});
+```
+
+## Result
+
+Build completes with 0 errors. Route `/projects/sample-project` renders successfully.
+Custom 404 renders for unknown slugs. Infrastructure is ready for Story 4.2 to add
+full `ProjectDetail` layout styling.
