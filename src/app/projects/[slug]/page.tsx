@@ -44,7 +44,7 @@ export default async function ProjectDetailPage({ params }: Props) {
       <div className="mb-space-6">
         <Link
           href="/projects"
-          className="text-text-tertiary hover:text-accent focus-visible:ring-accent focus-visible:ring-offset-bg-primary text-small duration-micro rounded font-mono transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+          className="text-text-tertiary hover:text-accent focus-visible:ring-accent focus-visible:ring-offset-bg-primary text-small duration-micro rounded font-mono transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none motion-reduce:transition-none"
         >
           ← back to projects
         </Link>

@@ -20,13 +20,13 @@ export default function NotFound() {
         <div className="gap-space-4 flex flex-wrap">
           <Link
             href="/projects"
-            className="text-accent hover:text-accent-hover text-small duration-micro focus-visible:ring-accent focus-visible:ring-offset-bg-primary rounded underline underline-offset-4 transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+            className="text-accent hover:text-accent-hover text-small duration-micro focus-visible:ring-accent focus-visible:ring-offset-bg-primary rounded underline underline-offset-4 transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none motion-reduce:transition-none"
           >
             cd /projects
           </Link>
           <Link
             href="/contact"
-            className="text-text-secondary hover:text-text-primary text-small duration-micro focus-visible:ring-accent focus-visible:ring-offset-bg-primary rounded underline underline-offset-4 transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
+            className="text-text-secondary hover:text-text-primary text-small duration-micro focus-visible:ring-accent focus-visible:ring-offset-bg-primary rounded underline underline-offset-4 transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none motion-reduce:transition-none"
           >
             ./contact
           </Link>

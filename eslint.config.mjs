@@ -15,6 +15,11 @@ const eslintConfig = defineConfig([
     "next-env.d.ts",
   ]),
   eslintConfigPrettier, // MUST be last — disables formatting rules that conflict with Prettier
+  {
+    rules: {
+      "react-hooks/set-state-in-effect": "warn", // Warn against setting state in useEffect without proper dependencies, which can lead to infinite loops. This is a common mistake that can cause performance issues and crashes, so it's important to be aware of it.
+    },
+  },
 ]);
 
 export default eslintConfig;

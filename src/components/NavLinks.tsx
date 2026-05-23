@@ -64,7 +64,7 @@ export function NavLinks({ navigation }: { navigation: NavigationItem[] }) {
             <Link
               href={item.href}
               aria-current={isActive(item.href) ? "page" : undefined}
-              className={`text-text-secondary hover:text-text-primary duration-micro transition-colors ${focusRingClasses} ${
+              className={`text-text-secondary hover:text-text-primary duration-micro transition-colors motion-reduce:transition-none ${focusRingClasses} ${
                 isActive(item.href) ? "text-accent" : ""
               }`}
               {...(item.isExternal
@@ -79,7 +79,7 @@ export function NavLinks({ navigation }: { navigation: NavigationItem[] }) {
 
       {/* Mobile hamburger button */}
       <button
-        className={`text-text-secondary hover:text-text-primary duration-micro z-50 flex size-5 items-center justify-center transition-colors lg:hidden ${focusRingClasses}`}
+        className={`text-text-secondary hover:text-text-primary duration-micro z-50 flex size-5 items-center justify-center transition-colors motion-reduce:transition-none lg:hidden ${focusRingClasses}`}
         aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
         aria-expanded={isOpen}
         aria-controls="mobile-menu"
@@ -100,7 +100,7 @@ export function NavLinks({ navigation }: { navigation: NavigationItem[] }) {
                 <Link
                   href={item.href}
                   aria-current={isActive(item.href) ? "page" : undefined}
-                  className={`text-h3 text-text-secondary hover:text-text-primary duration-micro font-mono transition-colors ${focusRingClasses} ${
+                  className={`text-h3 text-text-secondary hover:text-text-primary duration-micro font-mono transition-colors motion-reduce:transition-none ${focusRingClasses} ${
                     isActive(item.href) ? "text-accent" : ""
                   }`}
                   onClick={() => setIsOpen(false)}
