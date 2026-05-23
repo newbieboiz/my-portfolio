@@ -418,3 +418,13 @@ body {
     transition: none;
   }
 }
+
+/* ─────────────────────────────────────────────
+   KEYBOARD SHORTCUTS HELP
+   Overlay styles for the ? key help panel
+   ──────────────────────────────────────────── */
+
+/* Reduced motion — no transition needed (static display) */
+@media (prefers-reduced-motion: reduce) {
+  /* KeyboardShortcutsHelp has no transitions — nothing to suppress */
+}

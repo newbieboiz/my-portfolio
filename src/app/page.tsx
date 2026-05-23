@@ -42,7 +42,7 @@ export default function Home() {
         </div>
       </SectionLayout>
 
-      <SectionLayout id="selected-work" label="selected work">
+      <SectionLayout id="selected-work" label="selected work" commandHint="⌘K">
         <div className="gap-space-6 grid grid-cols-1 md:grid-cols-2">
           {featuredProjects.map((project) => (
             <ProjectCard key={project.slug} project={project} />

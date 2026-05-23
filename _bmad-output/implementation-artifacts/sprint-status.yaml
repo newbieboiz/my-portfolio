@@ -75,7 +75,7 @@ development_status:
   # Epic 5: Developer Experience Layer (Command Palette)
   epic-5: in-progress
   5-1-command-palette-component-cmdk: done
-  5-2-keyboard-navigation-shortcuts: backlog
+  5-2-keyboard-navigation-shortcuts: done
   epic-5-retrospective: optional
 
   # Epic 6: Animation & Craft Layer

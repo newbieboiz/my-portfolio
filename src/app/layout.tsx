@@ -6,6 +6,7 @@ import { StatusStripe } from "@/components/StatusStripe";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { CommandPalette, type CommandItem } from "@/components/CommandPalette";
+import { KeyboardShortcutsHelp } from "@/components/KeyboardShortcutsHelp";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -56,6 +57,7 @@ export default function RootLayout({
         </a>
         <NavBar config={siteConfig} />
         <CommandPalette items={commandItems} />
+        <KeyboardShortcutsHelp />
         <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col">
           {children}
         </main>
