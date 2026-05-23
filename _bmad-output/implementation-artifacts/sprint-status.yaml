@@ -73,8 +73,8 @@ development_status:
   epic-4-retrospective: optional
 
   # Epic 5: Developer Experience Layer (Command Palette)
-  epic-5: backlog
-  5-1-command-palette-component-cmdk: backlog
+  epic-5: in-progress
+  5-1-command-palette-component-cmdk: done
   5-2-keyboard-navigation-shortcuts: backlog
   epic-5-retrospective: optional
 

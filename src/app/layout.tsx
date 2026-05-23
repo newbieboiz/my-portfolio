@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { getSiteConfig } from "@/lib/data";
+import { getSiteConfig, getProjects } from "@/lib/data";
 import { StatusStripe } from "@/components/StatusStripe";
 import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
+import { CommandPalette, type CommandItem } from "@/components/CommandPalette";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -23,6 +24,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const siteConfig = getSiteConfig();
+  const projects = getProjects();
+
+  const commandItems: CommandItem[] = [
+    { id: "page-home", label: "Home", href: "/", group: "Pages" },
+    {
+      id: "page-projects",
+      label: "Projects",
+      href: "/projects",
+      group: "Pages",
+    },
+    { id: "page-about", label: "About", href: "/about", group: "Pages" },
+    { id: "page-contact", label: "Contact", href: "/contact", group: "Pages" },
+    ...projects.map((p) => ({
+      id: `project-${p.slug}`,
+      label: p.title,
+      href: `/projects/${p.slug}`,
+      group: "Projects" as const,
+      keywords: [...p.techStack, p.slug, p.description],
+    })),
+  ];
   return (
     <html lang="en" className={`${geistMono.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col">
@@ -34,6 +55,7 @@ export default function RootLayout({
           Skip to main content
         </a>
         <NavBar config={siteConfig} />
+        <CommandPalette items={commandItems} />
         <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col">
           {children}
         </main>

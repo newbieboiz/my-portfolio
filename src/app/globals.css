@@ -305,3 +305,116 @@ body {
   margin-bottom: var(--space-4);
   padding-left: var(--space-4);
 }
+
+/* ─────────────────────────────────────────────
+   COMMAND PALETTE STYLES
+   Targets cmdk [cmdk-*] data attributes
+   Command.Dialog portals to <body> via Radix
+   ──────────────────────────────────────────── */
+
+/* Overlay backdrop */
+[cmdk-overlay] {
+  background-color: rgba(0, 0, 0, 0.6);
+  inset: 0;
+  position: fixed;
+  z-index: 100;
+}
+
+/* Dialog container — centered, max-width constrained */
+[cmdk-dialog] {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  box-shadow:
+    0 24px 64px rgba(0, 0, 0, 0.6),
+    0 0 0 1px var(--border-subtle);
+  left: 50%;
+  max-height: 480px;
+  max-width: 560px;
+  overflow: hidden;
+  position: fixed;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 90vw;
+  z-index: 101;
+}
+
+/* Search input */
+[cmdk-input] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: var(--text-body);
+  line-height: var(--leading-body);
+  outline: none;
+  padding: var(--space-4) var(--space-6);
+  width: 100%;
+}
+
+[cmdk-input]::placeholder {
+  color: var(--text-muted);
+}
+
+/* Scrollable results list */
+[cmdk-list] {
+  max-height: 360px;
+  overflow-y: auto;
+  padding: var(--space-2) 0;
+  scroll-padding-block-end: 8px;
+  scroll-padding-block-start: 8px;
+}
+
+/* Group heading */
+[cmdk-group-heading] {
+  color: var(--text-muted);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: var(--text-xs);
+  letter-spacing: var(--tracking-badge);
+  padding: var(--space-2) var(--space-6);
+  text-transform: uppercase;
+  user-select: none;
+}
+
+/* Individual item */
+[cmdk-item] {
+  border-radius: 6px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-family: var(--font-geist-mono), monospace;
+  font-size: var(--text-small);
+  margin: 0 var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  transition:
+    background-color var(--duration-micro) ease,
+    color var(--duration-micro) ease;
+}
+
+/* Keyboard-selected item */
+[cmdk-item][data-selected="true"] {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+/* Pointer hover (matches selected state for consistency) */
+[cmdk-item]:hover {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+/* Empty state */
+[cmdk-empty] {
+  color: var(--text-muted);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: var(--text-small);
+  padding: var(--space-8) var(--space-6);
+  text-align: center;
+}
+
+/* Reduced motion — disable transitions */
+@media (prefers-reduced-motion: reduce) {
+  [cmdk-item] {
+    transition: none;
+  }
+}
