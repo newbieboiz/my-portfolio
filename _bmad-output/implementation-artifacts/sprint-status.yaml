@@ -82,7 +82,7 @@ development_status:
   epic-6: in-progress
   6-1-reduced-motion-infrastructure-usereducedmotion-hook: done
   6-2-gsap-scroll-triggered-entrance-animations: done
-  6-3-framer-motion-page-transitions: backlog
+  6-3-framer-motion-page-transitions: done
   6-4-hover-micro-interactions-project-card-hover-reveal: backlog
   epic-6-retrospective: optional
 
