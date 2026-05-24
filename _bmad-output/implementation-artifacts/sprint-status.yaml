@@ -87,8 +87,8 @@ development_status:
   epic-6-retrospective: optional
 
   # Epic 7: CV Export & QR Bridge
-  epic-7: backlog
-  7-1-qr-code-generation-utility: backlog
+  epic-7: in-progress
+  7-1-qr-code-generation-utility: done
   7-2-cv-pdf-document-components: backlog
   7-3-cv-download-button-client-side-export: backlog
   epic-7-retrospective: optional
