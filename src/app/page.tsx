@@ -17,8 +17,26 @@ export default function Home() {
   const siteConfig = getSiteConfig();
   const featuredProjects = getProjects().filter((p) => p.isFeatured);
 
+  const personSchema = {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    name: siteConfig.owner.name,
+    url: siteConfig.siteUrl,
+    email: siteConfig.owner.email,
+    jobTitle: siteConfig.owner.title,
+    sameAs: [
+      siteConfig.social.github,
+      siteConfig.social.linkedin,
+      ...(siteConfig.social.twitter ? [siteConfig.social.twitter] : []),
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
       <SectionLayout id="hello-world" label="hello world">
         <AnimatedSection>
           <div className="gap-space-6 flex flex-col">

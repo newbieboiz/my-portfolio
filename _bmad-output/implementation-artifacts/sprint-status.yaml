@@ -97,5 +97,5 @@ development_status:
   epic-8: in-progress
   8-1-per-page-metadata-canonical-urls: done
   8-2-open-graph-tags-social-preview-images: done
-  8-3-sitemap-robots-txt-person-schema: backlog
+  8-3-sitemap-robots-txt-person-schema: done
   epic-8-retrospective: optional
