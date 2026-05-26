@@ -39,7 +39,7 @@ export default function About() {
   return (
     <>
       {/* ── Section 1: Bio ── */}
-      <SectionLayout id="about" label="about" prose={true}>
+      <SectionLayout id="about" label="about" prose align="center">
         <AnimatedSection>
           <p className="text-body leading-body text-text-secondary">
             {siteConfig.owner.bio}
@@ -48,7 +48,7 @@ export default function About() {
       </SectionLayout>
 
       {/* ── Section 2: Skills ── */}
-      <SectionLayout id="skills" label="skills">
+      <SectionLayout id="skills" label="skills" prose align="center">
         <AnimatedSection>
           <div className="gap-space-12 flex flex-col">
             {skills.map((skillCategory) => (
@@ -68,7 +68,12 @@ export default function About() {
       </SectionLayout>
 
       {/* ── Section 3: Experience & Education ── */}
-      <SectionLayout id="experience" label="experience & education">
+      <SectionLayout
+        id="experience"
+        label="experience & education"
+        prose
+        align="center"
+      >
         <AnimatedSection>
           <div className="gap-space-12 flex flex-col">
             {/* Work Experience */}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { pdf } from "@react-pdf/renderer";
 import { CVDocument } from "./CVDocument";
 import { generateQRDataURL } from "@/lib/qr";
@@ -10,18 +10,18 @@ type DownloadState = "idle" | "generating" | "error";
 
 export function CVDownloadButton() {
   const [downloadState, setDownloadState] = useState<DownloadState>("idle");
-  const [isMobile, setIsMobile] = useState(false); // SSR-safe: start false
+  // const [isMobile, setIsMobile] = useState(false); // SSR-safe: start false
 
-  useEffect(() => {
-    const mql = window.matchMedia("(max-width: 767px)");
-    setIsMobile(mql.matches);
-    const handleChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
-    mql.addEventListener("change", handleChange);
-    return () => mql.removeEventListener("change", handleChange);
-  }, []);
+  // useEffect(() => {
+  //   const mql = window.matchMedia("(max-width: 767px)");
+  //   setIsMobile(mql.matches);
+  //   const handleChange = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+  //   mql.addEventListener("change", handleChange);
+  //   return () => mql.removeEventListener("change", handleChange);
+  // }, []);
 
   const handleClick = async () => {
-    if (isMobile || downloadState === "generating") return;
+    if (downloadState === "generating") return;
 
     setDownloadState("generating");
     try {
@@ -44,9 +44,8 @@ export function CVDownloadButton() {
     }
   };
 
-  const label = isMobile
-    ? "View on desktop to download"
-    : downloadState === "generating"
+  const label =
+    downloadState === "generating"
       ? "Generating..."
       : downloadState === "error"
         ? "Export failed — please try again"
@@ -55,7 +54,7 @@ export function CVDownloadButton() {
   return (
     <button
       onClick={handleClick}
-      disabled={isMobile || downloadState === "generating"}
+      disabled={downloadState === "generating"}
       aria-live="polite"
       aria-busy={downloadState === "generating"}
       className="px-space-6 py-space-4 border-border-active text-text-primary text-small duration-micro hover:border-accent hover:text-accent focus-visible:ring-accent focus-visible:ring-offset-bg-primary inline-flex items-center justify-center rounded border font-mono transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-60"

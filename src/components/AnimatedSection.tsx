@@ -23,6 +23,9 @@ export function AnimatedSection({
 
   useGSAP(
     () => {
+      if (!containerRef.current) return;
+      if (stagger && !containerRef.current.children.length) return;
+
       const mm = gsap.matchMedia();
 
       mm.add("(prefers-reduced-motion: no-preference)", () => {
@@ -37,7 +40,7 @@ export function AnimatedSection({
             scrollTrigger: {
               trigger: containerRef.current,
               start: "top 85%",
-              toggleActions: "play none none none", // fire once, no reverse
+              once: true, // kill trigger after first fire — prevents ScrollTrigger.refresh() double-play
             },
           });
         } else {
@@ -50,7 +53,7 @@ export function AnimatedSection({
             scrollTrigger: {
               trigger: containerRef.current,
               start: "top 85%",
-              toggleActions: "play none none none",
+              once: true, // kill trigger after first fire — prevents ScrollTrigger.refresh() double-play
             },
           });
         }
@@ -58,7 +61,7 @@ export function AnimatedSection({
 
       return () => mm.revert();
     },
-    { scope: containerRef },
+    { scope: containerRef, dependencies: [stagger] },
   );
 
   return (

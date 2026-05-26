@@ -79,7 +79,7 @@ export function NavLinks({ navigation }: { navigation: NavigationItem[] }) {
 
       {/* Mobile hamburger button */}
       <button
-        className={`text-text-secondary hover:text-text-primary duration-micro z-50 flex size-5 items-center justify-center transition-colors motion-reduce:transition-none lg:hidden ${focusRingClasses}`}
+        className={`text-text-secondary hover:text-text-primary duration-micro z-50 flex size-5 items-center justify-center text-xl transition-colors motion-reduce:transition-none lg:hidden ${focusRingClasses}`}
         aria-label={isOpen ? "Close navigation menu" : "Open navigation menu"}
         aria-expanded={isOpen}
         aria-controls="mobile-menu"

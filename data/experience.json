@@ -1,36 +1,108 @@
 [
   {
-    "company": "Acme Corp",
-    "title": "Senior Full-Stack Engineer",
-    "startDate": "2022-03",
-    "isCurrent": true,
-    "description": "Lead engineer on the core product team, responsible for frontend architecture and full-stack feature delivery.",
+    "company": "FPT Software",
+    "title": "Senior Frontend Developer",
+    "startDate": "2025-11",
+    "endDate": "2026-06",
+    "isCurrent": false,
+    "description": "Core contributor on the SDLC AI Solution team (15 engineers), building a code intelligence engine that extracts, organizes, and serves graph-based code context for AI-assisted development workflows.",
     "achievements": [
-      "Reduced page load time by 40% by migrating the legacy CRA app to Next.js App Router.",
-      "Introduced TypeScript strict mode across the frontend monorepo, eliminating a class of runtime errors.",
-      "Mentored two junior engineers, bringing them to independent feature delivery within six months."
+      "Designed and maintained a scalable frontend architecture for a complex internal AI product.",
+      "Refactored key frontend modules to improve reusability, performance, and long-term maintainability.",
+      "Partnered with BA/PM stakeholders to define UX requirements and collaborated with backend engineers to integrate RESTful APIs and align service contracts.",
+      "Conducted code reviews to enforce engineering standards, improve code quality, and reduce defects across the team.",
+      "Investigated and resolved production issues while supporting recovery efforts for critical development-system incidents.",
+      "Containerized the application using Docker to streamline local development, onboarding, and deployment workflows."
     ],
     "techStack": [
-      "Next.js",
       "TypeScript",
       "React",
-      "Node.js",
-      "PostgreSQL",
+      "Shadcn UI",
+      "Tailwind CSS",
+      "React Query",
+      "Docker",
+      "Vite"
+    ]
+  },
+  {
+    "company": "FPT Software",
+    "title": "Frontend Lead",
+    "startDate": "2025-02",
+    "endDate": "2025-10",
+    "isCurrent": false,
+    "description": "Led the frontend modernization of a transportation billing system for a Japanese logistics client, migrating a legacy PowerBuilder desktop application to a modern web-based platform. Responsible for frontend architecture, codebase foundation, legacy system analysis, team leadership, and delivery quality throughout the development lifecycle.",
+    "achievements": [
+      "Led a frontend team within a 12-member cross-functional project, providing technical direction and ensuring delivery quality.",
+      "Established and maintained the frontend architecture, codebase foundation, and development standards to support scalability and maintainability.",
+      "Analyzed and reverse-engineered legacy PowerBuilder application logic to facilitate system migration and ensure functional parity.",
+      "Designed reusable UI components and implemented user interfaces based on business requirements and design specifications.",
+      "Conducted code reviews and mentored team members to improve code quality, consistency, and engineering best practices.",
+      "Collaborated with stakeholders and development teams to clarify requirements, address technical challenges, and support project delivery.",
+      "Investigated and resolved development, testing, and production issues to maintain system stability and reliability."
+    ],
+    "techStack": [
+      "TypeScript",
+      "JavaScript",
+      "React",
+      "React Query",
+      "React Table",
+      "Ant Design",
+      "CSS"
+    ]
+  },
+  {
+    "company": "Hybrid Technologies",
+    "title": "Frontend Developer",
+    "startDate": "2023-06",
+    "endDate": "2024-10",
+    "isCurrent": false,
+    "description": "Contributed to a teaching and learning English platform for Japanese learners, rebuilding legacy modules and delivering new features.",
+    "achievements": [
+      "Developed responsive user interfaces for core learning workflows using Next.js 14.",
+      "Collaborated with UX/UI designers to transform designs into production-ready, reusable components.",
+      "Analyzed legacy systems and integrated backend APIs to support feature migration and new functionality.",
+      "Improved maintainability and performance through component standardization, code optimization, and reusable design patterns.",
+      "Performed browser compatibility testing, bug fixing, and production support throughout release cycles.",
+      "Participated actively in Agile ceremonies, including sprint planning, daily stand-ups, and retrospectives."
+    ],
+    "techStack": [
+      "Next.js 14",
+      "Redux",
+      "React Query",
+      "React Table",
+      "React Hook Form",
+      "Material UI",
       "Tailwind CSS"
     ]
   },
   {
-    "company": "Beta Studio",
-    "title": "Full-Stack Developer",
-    "startDate": "2019-07",
-    "endDate": "2022-02",
+    "company": "SmartDev LLC",
+    "title": "Frontend Developer",
+    "startDate": "2022-10",
+    "endDate": "2023-06",
     "isCurrent": false,
-    "description": "Full-stack developer on a small product team building B2B SaaS tools for the logistics industry.",
+    "description": "Worked on an e-commerce fulfillment platform supporting end-to-end retailer operations through a sustainable and eco-friendly business model.",
     "achievements": [
-      "Built and shipped a real-time shipment tracking feature used by 500+ daily active users.",
-      "Led a successful Rails-to-Node.js migration of the API layer with zero downtime.",
-      "Improved test coverage from 30% to 80%, reducing regression incidents by half."
+      "Implemented user interfaces and workflows based on approved design specifications and business requirements.",
+      "Collaborated with clients, product stakeholders, and designers to refine requirements and deliver sprint objectives.",
+      "Built reusable frontend modules and shared components to accelerate feature development and improve consistency.",
+      "Delivered enhancements, bug fixes, and iterative improvements to ensure product stability and release quality."
     ],
-    "techStack": ["React", "Ruby on Rails", "Node.js", "TypeScript", "MySQL"]
+    "techStack": ["React.js", "Redux", "React Query", "Chakra UI"]
+  },
+  {
+    "company": "SmartDev LLC",
+    "title": "Frontend Developer",
+    "startDate": "2021-06",
+    "endDate": "2022-10",
+    "isCurrent": false,
+    "description": "Developed logistics web applications focused on shipping-cost comparison, route visibility, and real-time delivery tracking.",
+    "achievements": [
+      "Built a shipping comparison platform that enabled users to evaluate shipping costs and estimated delivery times across multiple logistics providers.",
+      "Translated client-approved designs into responsive, production-ready user interfaces and collaborated directly with stakeholders throughout the development lifecycle.",
+      "Developed a real-time delivery-tracking application for monitoring vehicle movements and shipment progress.",
+      "Integrated MQTT.js to enable real-time location updates and live tracking capabilities within the logistics workflow."
+    ],
+    "techStack": ["Gatsby.js", "React.js", "MQTT.js"]
   }
 ]

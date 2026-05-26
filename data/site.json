@@ -1,16 +1,17 @@
 {
   "owner": {
-    "name": "BaoBao",
-    "title": "Full-Stack Engineer",
-    "bio": "Full-stack engineer with 6+ years of experience building modern web applications. I specialise in React and TypeScript, with a strong focus on performance, developer experience, and UI craft. I care about writing code that reads clearly, runs fast, and holds up over time.",
-    "tagline": "I build interfaces that feel inevitable.",
-    "email": "hello@baobao.dev",
+    "name": "Bao Truong",
+    "title": "Software Engineer",
+    "bio": "Hi, I'm Bao Truong, a web developer since 2021 with 5 years of experience building responsive, user-friendly websites and web applications. I specialize in JavaScript/TypeScript, React, and Node.js, and I focus on delivering high-quality, practical solutions that balance user experience, maintainability, and performance.",
+    "tagline": "Building reliable web products with clean code and thoughtful UX.",
+    "email": "quocbao080220@gmail.com",
+    "phone": "0868-208-687",
     "isAvailable": true,
     "availabilityText": "Open to new opportunities"
   },
   "social": {
-    "github": "https://github.com/baobao",
-    "linkedin": "https://linkedin.com/in/baobao"
+    "github": "https://github.com/newbieboiz",
+    "linkedin": "https://www.linkedin.com/in/bao-truong-a5a5a3246"
   },
   "navigation": [
     { "label": "Projects", "href": "/projects" },

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Badge } from "@/components/Badge";
+import { categorizeTechStack } from "@/lib/categorize-techstack";
 import type { Project } from "@/types/project";
 
 interface ProjectCardProps {
@@ -31,11 +32,10 @@ export function ProjectCard({ project }: ProjectCardProps) {
       </p>
       <div className="gap-space-2 flex flex-wrap">
         {project.techStack.map((tech) => (
-          <Badge key={tech} label={tech} />
+          <Badge key={tech} label={tech} category={categorizeTechStack(tech)} />
         ))}
       </div>
-      {/* Hover reveal: visible on mobile always; hidden on desktop until hover */}
-      <div className="border-border-subtle mt-space-4 pt-space-4 duration-micro border-t transition-all motion-reduce:transition-none md:max-h-0 md:overflow-hidden md:opacity-0 md:group-hover:max-h-24 md:group-hover:opacity-100">
+      <div className="border-border-subtle mt-space-4 pt-space-4 duration-micro border-t transition-all motion-reduce:transition-none">
         <p className="text-text-tertiary leading-xs mb-1 text-xs">
           {project.outcome}
         </p>

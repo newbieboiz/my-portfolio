@@ -11,6 +11,7 @@ import {
   getEducation,
   getSkills,
   getSiteConfig,
+  getProfessionalSummary,
 } from "@/lib/data";
 import type { Experience, Education } from "@/types/experience";
 import type { SkillCategory } from "@/types/site";
@@ -20,7 +21,7 @@ import { CVSection } from "./CVSection";
 const styles = StyleSheet.create({
   page: {
     fontFamily: "Courier",
-    fontSize: 9,
+    fontSize: 10,
     paddingTop: 45,
     paddingBottom: 45,
     paddingLeft: 45,
@@ -29,41 +30,43 @@ const styles = StyleSheet.create({
     color: "#1a1a25",
     lineHeight: 1.4,
   },
+  profSummary: { marginBottom: 8 },
   expEntry: { marginBottom: 8 },
   expHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 2,
   },
-  expCompany: { fontFamily: "Courier-Bold", fontSize: 9, color: "#1a1a25" },
+  expCompany: { fontFamily: "Courier-Bold", fontSize: 10, color: "#1a1a25" },
   expDates: { fontFamily: "Courier", fontSize: 8, color: "#6b6b80" },
   expRole: {
     fontFamily: "Courier",
     fontSize: 9,
+    fontStyle: "italic",
     color: "#45455a",
     marginBottom: 2,
   },
   expDesc: {
     fontFamily: "Courier",
-    fontSize: 8,
+    fontSize: 10,
     color: "#45455a",
     marginBottom: 3,
   },
   achievement: {
-    fontSize: 8,
+    fontSize: 10,
     color: "#45455a",
     marginLeft: 8,
     marginBottom: 1,
   },
-  skillRow: { flexDirection: "row", marginBottom: 3, flexWrap: "wrap" },
+  skillRow: { flexDirection: "row", marginBottom: 4, flexWrap: "wrap" },
   skillCategory: {
     fontFamily: "Courier-Bold",
-    fontSize: 8,
+    fontSize: 10,
     color: "#1a1a25",
-    marginRight: 6,
+    marginRight: 24,
     width: 80,
   },
-  skillList: { fontFamily: "Courier", fontSize: 8, color: "#45455a", flex: 1 },
+  skillList: { fontFamily: "Courier", fontSize: 9, color: "#45455a", flex: 1 },
   eduEntry: { marginBottom: 4 },
   eduHeader: { flexDirection: "row", justifyContent: "space-between" },
   eduInstitution: {
@@ -71,8 +74,8 @@ const styles = StyleSheet.create({
     fontSize: 9,
     color: "#1a1a25",
   },
-  eduDates: { fontFamily: "Courier", fontSize: 8, color: "#6b6b80" },
-  eduDegree: { fontFamily: "Courier", fontSize: 8, color: "#45455a" },
+  eduDates: { fontFamily: "Courier", fontSize: 9, color: "#6b6b80" },
+  eduDegree: { fontFamily: "Courier", fontSize: 9, color: "#45455a" },
   qrFooter: {
     flexDirection: "row",
     alignItems: "center",
@@ -83,7 +86,7 @@ const styles = StyleSheet.create({
     borderTopStyle: "solid",
   },
   qrImage: { width: 80, height: 80, marginRight: 10 },
-  qrLabel: { fontFamily: "Courier", fontSize: 8, color: "#6b6b80" },
+  qrLabel: { fontFamily: "Courier", fontSize: 9, color: "#6b6b80" },
 });
 
 function formatDate(isoMonth: string): string {
@@ -98,6 +101,7 @@ export function CVDocument({ qrDataUrl }: { qrDataUrl: string }) {
   const education = getEducation();
   const skills = getSkills();
   const site = getSiteConfig();
+  const professionalSummary = getProfessionalSummary();
   const { owner, social } = site;
 
   return (
@@ -107,9 +111,14 @@ export function CVDocument({ qrDataUrl }: { qrDataUrl: string }) {
           name={owner.name}
           title={owner.title}
           email={owner.email}
+          phone={owner.phone}
           github={social.github}
           linkedin={social.linkedin}
         />
+
+        <CVSection title="Professional Summary">
+          <Text style={styles.profSummary}>{professionalSummary}</Text>
+        </CVSection>
 
         <CVSection title="Experience">
           {experience.map((exp: Experience, i: number) => (
@@ -159,10 +168,10 @@ export function CVDocument({ qrDataUrl }: { qrDataUrl: string }) {
           ))}
         </CVSection>
 
-        <View style={styles.qrFooter}>
+        {/* <View style={styles.qrFooter}>
           <Image src={qrDataUrl} style={styles.qrImage} />
           <Text style={styles.qrLabel}>Scan to view live portfolio</Text>
-        </View>
+        </View> */}
       </Page>
     </Document>
   );

@@ -5,6 +5,7 @@ import { SectionLayout } from "@/components/SectionLayout";
 import { ProjectCard } from "@/components/ProjectCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { CVDownloadButton } from "@/components/cv/CVDownloadButton";
+import { HeroSection } from "@/components/HeroSection";
 
 export const metadata = buildMetadata({
   title: "BaoBao — Full-Stack Engineer",
@@ -37,16 +38,15 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
       />
-      <SectionLayout id="hello-world" label="hello world">
+      <HeroSection id="hello-world" label="hello world">
         <AnimatedSection>
           <div className="gap-space-6 flex flex-col">
-            {/* Name — hero typography scale (56px desktop, 36px mobile) */}
-            <p className="md:text-hero leading-hero tracking-hero text-text-primary text-[2.25rem] font-bold">
+            <h1 className="md:text-hero leading-hero tracking-hero text-text-primary text-[2.25rem] font-bold">
               {siteConfig.owner.name}
-            </p>
+            </h1>
 
             {/* Tagline — h2 scale (32px desktop, 24px mobile) */}
-            <p className="md:text-h2 leading-h2 tracking-heading text-text-secondary max-w-prose text-[1.5rem] font-semibold">
+            <p className="md:text-h2 leading-h2 tracking-heading text-text-secondary text-h3 max-w-prose font-semibold">
               {siteConfig.owner.tagline}
             </p>
 
@@ -65,7 +65,7 @@ export default function Home() {
             </div>
           </div>
         </AnimatedSection>
-      </SectionLayout>
+      </HeroSection>
 
       <SectionLayout id="selected-work" label="selected work" commandHint="⌘K">
         <AnimatedSection

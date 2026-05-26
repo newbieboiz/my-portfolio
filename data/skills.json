@@ -1,38 +1,75 @@
 [
   {
-    "category": "Frontend",
+    "category": "Programming Languages",
     "skills": [
-      { "name": "React", "level": "expert" },
-      { "name": "TypeScript", "level": "expert" },
+      { "name": "HTML5", "level": "expert" },
+      { "name": "CSS3", "level": "advanced" },
+      { "name": "JavaScript", "level": "advanced" },
+      { "name": "TypeScript", "level": "advanced" },
+      { "name": "Python", "level": "beginner" },
+      { "name": "SQL", "level": "intermediate" }
+    ]
+  },
+  {
+    "category": "Frameworks & Libraries",
+    "skills": [
+      { "name": "React.js", "level": "expert" },
       { "name": "Next.js", "level": "advanced" },
-      { "name": "HTML & CSS", "level": "expert" }
+      { "name": "Express.js", "level": "intermediate" },
+      { "name": "Node.js", "level": "intermediate" },
+      { "name": "Redux", "level": "advanced" },
+      { "name": "React Query", "level": "advanced" },
+      { "name": "React Table", "level": "intermediate" },
+      { "name": "React Hook Form", "level": "intermediate" }
     ]
   },
   {
-    "category": "Styling & Design",
+    "category": "UI & Styling",
     "skills": [
+      { "name": "SCSS", "level": "advanced" },
       { "name": "Tailwind CSS", "level": "expert" },
-      { "name": "CSS Animations", "level": "advanced" },
-      { "name": "GSAP", "level": "intermediate" },
-      { "name": "Framer Motion", "level": "intermediate" }
+      { "name": "Shadcn UI", "level": "advanced" },
+      { "name": "Ant Design", "level": "advanced" },
+      { "name": "Material UI", "level": "advanced" },
+      { "name": "Chakra UI", "level": "intermediate" },
+      { "name": "Styled Components", "level": "intermediate" }
     ]
   },
   {
-    "category": "Backend & Data",
+    "category": "Databases",
     "skills": [
-      { "name": "Node.js", "level": "advanced" },
-      { "name": "PostgreSQL", "level": "advanced" },
-      { "name": "REST APIs", "level": "expert" },
-      { "name": "GraphQL", "level": "intermediate" }
+      { "name": "PostgreSQL", "level": "beginner" },
+      { "name": "MongoDB", "level": "beginner" }
     ]
   },
   {
-    "category": "Tooling & DevOps",
+    "category": "Tools & Platforms",
     "skills": [
       { "name": "Git", "level": "advanced" },
-      { "name": "pnpm", "level": "intermediate" },
-      { "name": "Vercel", "level": "advanced" },
-      { "name": "Docker", "level": "intermediate" }
+      { "name": "Github", "level": "advanced" },
+      { "name": "Github Copilot", "level": "intermediate" },
+      { "name": "Docker", "level": "intermediate" },
+      { "name": "NPM", "level": "intermediate" },
+      { "name": "Webpack", "level": "intermediate" },
+      { "name": "Vite", "level": "intermediate" },
+      { "name": "Eslint", "level": "intermediate" },
+      { "name": "Prettier", "level": "intermediate" }
     ]
+  },
+  {
+    "category": "Other",
+    "skills": [
+      { "name": "OOP", "level": "advanced" },
+      { "name": "SOLID Principles", "level": "advanced" },
+      { "name": "Design Patterns", "level": "intermediate" },
+      { "name": "RESTful API", "level": "advanced" },
+      { "name": "Agile Methodologies", "level": "intermediate" },
+      { "name": "LLM Prompt Engineering", "level": "intermediate" },
+      { "name": "Augmented Intelligence", "level": "intermediate" }
+    ]
+  },
+  {
+    "category": "Languages",
+    "skills": [{ "name": "English (Intermediate)", "level": "intermediate" }]
   }
 ]

@@ -6,6 +6,10 @@ export function useCommandPalette() {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    const handleToggle = () => {
+      setOpen((prev) => !prev);
+    };
+
     const down = (e: KeyboardEvent) => {
       // Suppress when focus is inside a text input
       const target = e.target as HTMLElement;
@@ -23,7 +27,11 @@ export function useCommandPalette() {
     };
 
     document.addEventListener("keydown", down);
-    return () => document.removeEventListener("keydown", down);
+    window.addEventListener("toggle-command-palette", handleToggle);
+    return () => {
+      document.removeEventListener("keydown", down);
+      window.removeEventListener("toggle-command-palette", handleToggle);
+    };
   }, []);
 
   return {

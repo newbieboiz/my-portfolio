@@ -16,7 +16,7 @@ export default function Contact() {
   const { github, linkedin, twitter } = siteConfig.social;
 
   return (
-    <SectionLayout id="contact" label="contact" prose={true}>
+    <SectionLayout id="contact" label="contact" prose align="center">
       <AnimatedSection>
         <div className="gap-space-8 flex flex-col">
           {/* Email */}

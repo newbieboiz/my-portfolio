@@ -16,9 +16,7 @@ export function NavBar({ config }: { config: SiteConfig }) {
           href="/"
           className={`text-small font-mono font-bold ${focusRingClasses}`}
         >
-          <span className="text-text-primary">bao</span>
-          <span className="text-accent">.</span>
-          <span className="text-text-primary">dev</span>
+          <span className="text-text-primary">BaoBao</span>
         </Link>
         <NavLinks navigation={config.navigation} />
       </div>
