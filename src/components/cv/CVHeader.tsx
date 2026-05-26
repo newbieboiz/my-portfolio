@@ -4,7 +4,8 @@ interface CVHeaderProps {
   name: string;
   title: string;
   email: string;
-  github: string;
+  phone: string;
+  github?: string;
   linkedin: string;
 }
 
@@ -24,13 +25,13 @@ const styles = StyleSheet.create({
   },
   name: {
     fontFamily: "Courier-Bold",
-    fontSize: 18,
+    fontSize: 24,
     color: "#1a1a25",
-    marginBottom: 2,
+    marginBottom: 12,
   },
   jobTitle: {
     fontFamily: "Courier",
-    fontSize: 10,
+    fontSize: 12,
     color: "#45455a",
   },
   right: {
@@ -49,6 +50,7 @@ export function CVHeader({
   name,
   title,
   email,
+  phone,
   github,
   linkedin,
 }: CVHeaderProps) {
@@ -60,7 +62,8 @@ export function CVHeader({
       </View>
       <View style={styles.right}>
         <Text style={styles.contactItem}>{email}</Text>
-        <Text style={styles.contactItem}>{github}</Text>
+        <Text style={styles.contactItem}>{phone}</Text>
+        {github && <Text style={styles.contactItem}>{github}</Text>}
         <Text style={styles.contactItem}>{linkedin}</Text>
       </View>
     </View>

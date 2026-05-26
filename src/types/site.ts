@@ -22,12 +22,13 @@ export interface SiteConfig {
     bio: string;
     tagline: string;
     email: string;
+    phone: string;
     isAvailable: boolean;
     availabilityText: string;
   };
   social: {
-    github: string;
     linkedin: string;
+    github?: string;
     twitter?: string;
   };
   navigation: NavigationItem[];

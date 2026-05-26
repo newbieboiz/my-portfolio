@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 const styles = StyleSheet.create({
   section: {
-    marginBottom: 10,
+    marginBottom: 12,
   },
   heading: {
     fontFamily: "Courier-Bold",

@@ -1,18 +1,18 @@
 "use client";
 
+import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 
 interface PageTransitionProps {
   children: React.ReactNode;
 }
 
 export function PageTransition({ children }: PageTransitionProps) {
-  const pathname = usePathname();
   const prefersReducedMotion = useReducedMotion();
+  const pathname = usePathname();
 
   return (
-    <AnimatePresence mode="wait" initial={false}>
+    <AnimatePresence mode="popLayout">
       <motion.div
         key={pathname}
         initial={{ opacity: 0 }}

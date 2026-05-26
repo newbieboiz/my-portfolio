@@ -1,0 +1,59 @@
+---
+title: Real-Time Analytics Dashboard
+description: High-throughput analytics dashboard visualising live event streams for a SaaS enterprise.
+techStack:
+  - React
+  - TypeScript
+  - WebSockets
+  - D3.js
+  - Node.js
+outcome: Reduced time-to-insight from 5 minutes to under 10 seconds for operational monitoring.
+isFeatured: true
+startDate: "2024-06"
+endDate: "2025-02"
+projectUrl: "https://dashboard.example.com"
+---
+
+## Problem
+
+Network and system monitoring teams at a high-scale SaaS enterprise were working off batch reports generated every five minutes. Because of this lag, critical live stream socket anomalies and micro-outages went undetected until clients filed high-priority support tickets, cascading into significant Service Level Agreement (SLA) breaches.
+
+## Approach
+
+I architected a WebSockets pipeline to ingest live event data, using React along with D3.js to render canvas-based real-time line charts, scatterplots, and system heatmaps without triggering expensive React re-renders.
+
+```tsx
+// Using canvas rendering for maximum frame-rate stability
+useEffect(() => {
+  const canvas = canvasRef.current;
+  if (!canvas) return;
+
+  const ctx = canvas.getContext("2d");
+  if (!ctx) return;
+
+  let animationFrameId: number;
+
+  const render = () => {
+    ctx.clearRect(0, 0, width, height);
+
+    // Draw real-time stream data points
+    ctx.fillStyle = "var(--accent)";
+    data.forEach((point) => {
+      ctx.beginPath();
+      ctx.arc(xScale(point.time), yScale(point.value), 3, 0, 2 * Math.PI);
+      ctx.fill();
+    });
+
+    animationFrameId = requestAnimationFrame(render);
+  };
+
+  render();
+  return () => cancelAnimationFrame(animationFrameId);
+}, [data, width, height]);
+```
+
+## Result
+
+- Successfully decreased incident detection times (Mean Time to Detect) by 70%.
+- Achieved constant 60 FPS performance during real-time visualization of ingestion streams peaking at 10k messages per second.
+- Adopted by three critical internal operational teams with high satisfaction scores.

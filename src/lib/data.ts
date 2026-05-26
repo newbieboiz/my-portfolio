@@ -7,6 +7,11 @@ import experienceData from "../../data/experience.json";
 import skillsData from "../../data/skills.json";
 import educationData from "../../data/education.json";
 import siteData from "../../data/site.json";
+import professionalSummaryData from "../../data/professional-summary.json";
+
+export function getProfessionalSummary(): string {
+  return professionalSummaryData.content;
+}
 
 export function getProjects(): Project[] {
   return projectsData as Project[];

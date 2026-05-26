@@ -7,7 +7,9 @@ import { NavBar } from "@/components/NavBar";
 import { Footer } from "@/components/Footer";
 import { CommandPalette, type CommandItem } from "@/components/CommandPalette";
 import { KeyboardShortcutsHelp } from "@/components/KeyboardShortcutsHelp";
-import { PageTransition } from "@/components/PageTransition";
+import { CRTEffect } from "@/components/CRTEffect";
+import { SystemDiagnosticConsole } from "@/components/SystemDiagnosticConsole";
+import { headers } from "next/headers";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -44,11 +46,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const nonce = (await headers()).get("x-nonce") || undefined;
   const siteConfig = getSiteConfig();
   const projects = getProjects();
 
@@ -70,9 +73,17 @@ export default function RootLayout({
       keywords: [...p.techStack, p.slug, p.description],
     })),
   ];
+
   return (
-    <html lang="en" className={`${geistMono.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      nonce={nonce}
+      suppressHydrationWarning
+      className={`${geistMono.variable} h-full antialiased`}
+    >
       <body className="flex min-h-full flex-col">
+        <CRTEffect />
+        <SystemDiagnosticConsole />
         <StatusStripe config={siteConfig} />
         <a
           href="#main-content"
@@ -84,7 +95,7 @@ export default function RootLayout({
         <CommandPalette items={commandItems} />
         <KeyboardShortcutsHelp />
         <main id="main-content" tabIndex={-1} className="flex flex-1 flex-col">
-          <PageTransition>{children}</PageTransition>
+          <div className="container mx-auto">{children}</div>
         </main>
         <Footer config={siteConfig} />
       </body>

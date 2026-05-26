@@ -1,0 +1,56 @@
+---
+title: Personal Portfolio
+description: Public portfolio website with a command line aesthetic, integrated PDF CV generation, and keyboard navigation.
+techStack:
+  - Next.js
+  - TypeScript
+  - Tailwind CSS
+  - GSAP
+outcome: Live portfolio site with sub-1.5s First Contentful Paint (FCP) and custom cmdk navigation.
+isFeatured: true
+startDate: "2026-04"
+githubUrl: "https://github.com/baobao/my-portfolio"
+---
+
+## Problem
+
+Recruiters review hundreds of candidate profiles weekly. Standard PDF CVs offer no living proof of code quality, while standard web portfolios are frequently slow, full of layout shifts, and provide an identical visual layout from a theme builder.
+
+I needed a personal brand surface that acted as a bridge between the physical and digital world, demonstrating the level of technical craftsmanship and performance that I bring to engineering teams without adding friction to the reader's workflow.
+
+## Approach
+
+I designed a terminal-aesthetic Next.js site where keyboard navigation and a cmdk-based command palette act as first-class citizens. To solve the distribution problem, I integrated a custom `@react-pdf/renderer` dynamic client-side engine that embeds a real-time generated companion QR code on export.
+
+```ts
+// Custom Hook for global command palette trigger
+export function useCommandPalette() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      const target = e.target as HTMLElement;
+      const isTextInput =
+        target.tagName === "INPUT" || target.tagName === "TEXTAREA";
+
+      if (isTextInput && e.key !== "k") return;
+
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setOpen((prev) => !prev);
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
+
+  return { open, setOpen, close: () => setOpen(false) };
+}
+```
+
+## Result
+
+- Built a fully-responsive experience serving as proof of frontend design and animation craftsmanship.
+- Achieved sub-1.5s First Contentful Paint by leveraging Next.js static output (SSG) with optimized Tailwind v4 token layering.
+- Linked paper CV screeners directly back into the live experience with high-fidelity canvas-generated QR codes.
