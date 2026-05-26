@@ -1,19 +1,20 @@
-import type { Metadata } from "next";
 import {
   getSiteConfig,
   getSkills,
   getExperience,
   getEducation,
 } from "@/lib/data";
+import { buildMetadata } from "@/lib/metadata";
 import { SectionLayout } from "@/components/SectionLayout";
 import { Badge } from "@/components/Badge";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "About | BaoBao",
   description:
     "BaoBao's background, technical skills, and work experience as a full-stack engineer.",
-};
+  path: "/about",
+});
 
 function formatDate(dateStr: string): string {
   const normalized = dateStr.length === 7 ? `${dateStr}-01` : dateStr;

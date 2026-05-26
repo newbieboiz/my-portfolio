@@ -1,7 +1,15 @@
+import { buildMetadata } from "@/lib/metadata";
 import { SectionLayout } from "@/components/SectionLayout";
 import { ProjectCard } from "@/components/ProjectCard";
 import { getProjects } from "@/lib/data";
 import { AnimatedSection } from "@/components/AnimatedSection";
+
+export const metadata = buildMetadata({
+  title: "Projects | BaoBao",
+  description:
+    "A curated selection of full-stack projects built with React, TypeScript, and modern web technologies.",
+  path: "/projects",
+});
 
 export default function Projects() {
   const projects = getProjects();

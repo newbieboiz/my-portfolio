@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 
 import { Badge } from "@/components/Badge";
 import { SectionLayout } from "@/components/SectionLayout";
+import { buildMetadata } from "@/lib/metadata";
 import { getAllProjectSlugs, getProjectBySlug } from "@/lib/mdx";
 
 interface Props {
@@ -21,15 +22,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!project) return {};
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
-
-  return {
+  return buildMetadata({
     title: `${project.meta.title} | BaoBao`,
     description: project.meta.description,
-    alternates: {
-      canonical: `${siteUrl}/projects/${slug}`,
-    },
-  };
+    path: `/projects/${slug}`,
+  });
 }
 
 export default async function ProjectDetailPage({ params }: Props) {

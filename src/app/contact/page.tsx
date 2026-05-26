@@ -1,13 +1,14 @@
-import type { Metadata } from "next";
 import { getSiteConfig } from "@/lib/data";
+import { buildMetadata } from "@/lib/metadata";
 import { SectionLayout } from "@/components/SectionLayout";
 import { AnimatedSection } from "@/components/AnimatedSection";
 
-export const metadata: Metadata = {
+export const metadata = buildMetadata({
   title: "Contact | BaoBao",
   description:
     "Get in touch with BaoBao — full-stack engineer open to new opportunities.",
-};
+  path: "/contact",
+});
 
 export default function Contact() {
   const siteConfig = getSiteConfig();

@@ -1,9 +1,17 @@
 import Link from "next/link";
 import { getSiteConfig, getProjects } from "@/lib/data";
+import { buildMetadata } from "@/lib/metadata";
 import { SectionLayout } from "@/components/SectionLayout";
 import { ProjectCard } from "@/components/ProjectCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
 import { CVDownloadButton } from "@/components/cv/CVDownloadButton";
+
+export const metadata = buildMetadata({
+  title: "BaoBao — Full-Stack Engineer",
+  description:
+    "Full-stack engineer specialising in React and TypeScript — building interfaces that feel inevitable.",
+  path: "/",
+});
 
 export default function Home() {
   const siteConfig = getSiteConfig();
