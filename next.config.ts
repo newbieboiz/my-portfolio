@@ -10,7 +10,7 @@ const ContentSecurityPolicy = [
   "style-src 'self' 'unsafe-inline'", // unsafe-inline required by Tailwind CSS v4
   "img-src 'self' data: blob: https:",
   "font-src 'self' data:",
-  "connect-src 'self' https://*.vercel.app https://*.vercel-insights.com wss:",
+  "connect-src 'self' data: https://*.vercel.app https://*.vercel-insights.com wss:", // data: required for @react-pdf/renderer WASM fetch inside Web Worker
   "frame-src 'none'",
   "object-src 'none'",
   "base-uri 'self'",

@@ -3,6 +3,7 @@ import { getSiteConfig, getProjects } from "@/lib/data";
 import { SectionLayout } from "@/components/SectionLayout";
 import { ProjectCard } from "@/components/ProjectCard";
 import { AnimatedSection } from "@/components/AnimatedSection";
+import { CVDownloadButton } from "@/components/cv/CVDownloadButton";
 
 export default function Home() {
   const siteConfig = getSiteConfig();
@@ -33,13 +34,8 @@ export default function Home() {
                 View Projects
               </Link>
 
-              {/* Secondary CTA — PDF export deferred to Story 7.3; currently routes to /contact */}
-              <Link
-                href="/contact"
-                className="px-space-6 py-space-4 border-border-active text-text-primary text-small duration-micro hover:border-accent hover:text-accent focus-visible:ring-accent focus-visible:ring-offset-bg-primary inline-flex items-center justify-center rounded border font-mono transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
-              >
-                Download CV
-              </Link>
+              {/* Secondary CTA — PDF export (Story 7.3) */}
+              <CVDownloadButton />
             </div>
           </div>
         </AnimatedSection>
