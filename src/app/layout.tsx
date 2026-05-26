@@ -18,6 +18,30 @@ export const metadata: Metadata = {
   title: "BaoBao — Full-Stack Engineer",
   description:
     "Full-stack engineer portfolio — projects, experience, and contact.",
+  openGraph: {
+    title: "BaoBao — Full-Stack Engineer",
+    description:
+      "Full-stack engineer portfolio — projects, experience, and contact.",
+    url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+    type: "website",
+    images: [
+      {
+        url: `${process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"}/images/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "BaoBao — Full-Stack Engineer portfolio",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BaoBao — Full-Stack Engineer",
+    description:
+      "Full-stack engineer portfolio — projects, experience, and contact.",
+    images: [
+      `${process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"}/images/og-image.png`,
+    ],
+  },
 };
 
 export default function RootLayout({

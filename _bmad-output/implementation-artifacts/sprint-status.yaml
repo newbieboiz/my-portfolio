@@ -96,6 +96,6 @@ development_status:
   # Epic 8: SEO & Discoverability
   epic-8: in-progress
   8-1-per-page-metadata-canonical-urls: done
-  8-2-open-graph-tags-social-preview-images: backlog
+  8-2-open-graph-tags-social-preview-images: done
   8-3-sitemap-robots-txt-person-schema: backlog
   epic-8-retrospective: optional
